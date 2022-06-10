@@ -1,0 +1,5435 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>U3 - Image Segmentation</title>
+    <style type="text/css">
+      * {
+        margin: 0;
+        padding: 0;
+        text-indent: 0;
+      }
+      .s1 {
+        color: black;
+        font-family: "Times New Roman", serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 44pt;
+      }
+      .s2 {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 11pt;
+      }
+      .s3 {
+        color: #1e1c11;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 36pt;
+      }
+      .p,
+      p {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 20pt;
+        margin: 0pt;
+      }
+      .s4 {
+        color: #1e1c11;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 32pt;
+      }
+      .h2,
+      h2 {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 20pt;
+      }
+      .s5 {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 13pt;
+        vertical-align: -4pt;
+      }
+      .s6 {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 13pt;
+        vertical-align: -4pt;
+      }
+      .s7 {
+        color: black;
+        font-family: Arial, sans-serif;
+        font-style: italic;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 20pt;
+      }
+      .s8 {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 32pt;
+      }
+      .s9 {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 18pt;
+      }
+      h3 {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 18pt;
+      }
+      .s10 {
+        color: black;
+        font-family: Arial, sans-serif;
+        font-style: italic;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 18pt;
+      }
+      .s11 {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 12pt;
+        vertical-align: -4pt;
+      }
+      .s12 {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 12pt;
+        vertical-align: -4pt;
+      }
+      .s13 {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 10pt;
+      }
+      .s14 {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 10pt;
+        vertical-align: 21pt;
+      }
+      .s15 {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 24pt;
+      }
+      .s16 {
+        color: black;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+      }
+      .s17 {
+        color: #878787;
+        font-family: "Times New Roman", serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 12pt;
+        vertical-align: 3pt;
+      }
+      h1 {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 24pt;
+      }
+      .s18 {
+        color: black;
+        font-family: Arial-BoldItalicMT, sans-serif;
+        font-style: italic;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 18pt;
+      }
+      .s19 {
+        color: black;
+        font-family: Arial-BoldItalicMT, sans-serif;
+        font-style: italic;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 20pt;
+      }
+      .s20 {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 11.5pt;
+        vertical-align: -2pt;
+      }
+      .s21 {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 13pt;
+        vertical-align: -2pt;
+      }
+      .s22 {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 10pt;
+        vertical-align: 36pt;
+      }
+      .s23 {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 10pt;
+        vertical-align: 42pt;
+      }
+      .s24 {
+        color: black;
+        font-family: "Times New Roman", serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 20pt;
+      }
+      .s25 {
+        color: black;
+        font-family: "Times New Roman", serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 18pt;
+      }
+      li {
+        display: block;
+      }
+      #l1 {
+        padding-left: 0pt;
+      }
+      #l1 > li > *:first-child:before {
+        content: "• ";
+        color: black;
+        font-family: Arial, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 20pt;
+      }
+      li {
+        display: block;
+      }
+      #l2 {
+        padding-left: 0pt;
+      }
+      #l2 > li > *:first-child:before {
+        content: "• ";
+        color: black;
+        font-family: Arial, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 20pt;
+      }
+      li {
+        display: block;
+      }
+      #l3 {
+        padding-left: 0pt;
+      }
+      #l3 > li > *:first-child:before {
+        content: "• ";
+        color: black;
+        font-family: Arial, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 20pt;
+      }
+      #l4 {
+        padding-left: 0pt;
+      }
+      #l4 > li > *:first-child:before {
+        content: "– ";
+        color: black;
+        font-family: Arial, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 20pt;
+      }
+      li {
+        display: block;
+      }
+      #l5 {
+        padding-left: 0pt;
+      }
+      #l5 > li > *:first-child:before {
+        content: "• ";
+        color: black;
+        font-family: Arial, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 20pt;
+      }
+      #l6 {
+        padding-left: 0pt;
+      }
+      #l6 > li > *:first-child:before {
+        content: "• ";
+        color: black;
+        font-family: Arial, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 20pt;
+      }
+      li {
+        display: block;
+      }
+      #l7 {
+        padding-left: 0pt;
+      }
+      #l7 > li > *:first-child:before {
+        content: "• ";
+        color: black;
+        font-family: Arial, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 18pt;
+      }
+      #l8 {
+        padding-left: 0pt;
+      }
+      #l8 > li > *:first-child:before {
+        content: "– ";
+        color: black;
+        font-family: Arial, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 18pt;
+      }
+      #l9 {
+        padding-left: 0pt;
+        counter-reset: h1 1;
+      }
+      #l9 > li > *:first-child:before {
+        counter-increment: h1;
+        content: "(" counter(h1, decimal) ") ";
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 18pt;
+      }
+      #l9 > li:first-child > *:first-child:before {
+        counter-increment: h1 0;
+      }
+      #l10 {
+        padding-left: 0pt;
+        counter-reset: i1 1;
+      }
+      #l10 > li > *:first-child:before {
+        counter-increment: i1;
+        content: "(" counter(i1, decimal) ") ";
+        color: black;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+      }
+      #l10 > li:first-child > *:first-child:before {
+        counter-increment: i1 0;
+      }
+      #l11 {
+        padding-left: 0pt;
+        counter-reset: i1 1;
+      }
+      #l11 > li > *:first-child:before {
+        counter-increment: i1;
+        content: "(" counter(i1, decimal) ") ";
+        color: black;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+      }
+      #l11 > li:first-child > *:first-child:before {
+        counter-increment: i1 0;
+      }
+      #l12 {
+        padding-left: 0pt;
+        counter-reset: i2 1;
+      }
+      #l12 > li > *:first-child:before {
+        counter-increment: i2;
+        content: "(" counter(i2, decimal) ") ";
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 20pt;
+      }
+      #l12 > li:first-child > *:first-child:before {
+        counter-increment: i2 0;
+      }
+      li {
+        display: block;
+      }
+      #l13 {
+        padding-left: 0pt;
+      }
+      #l13 > li > *:first-child:before {
+        content: "• ";
+        color: black;
+        font-family: Arial, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+      }
+      li {
+        display: block;
+      }
+      #l14 {
+        padding-left: 0pt;
+      }
+      #l14 > li > *:first-child:before {
+        content: "• ";
+        color: black;
+        font-family: Arial, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 20pt;
+      }
+      #l15 {
+        padding-left: 0pt;
+      }
+      #l15 > li > *:first-child:before {
+        content: "• ";
+        color: black;
+        font-family: Arial, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 24pt;
+      }
+      li {
+        display: block;
+      }
+      #l16 {
+        padding-left: 0pt;
+      }
+      #l16 > li > *:first-child:before {
+        content: "• ";
+        color: black;
+        font-family: Arial, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 24pt;
+      }
+      #l17 {
+        padding-left: 0pt;
+      }
+      #l17 > li > *:first-child:before {
+        content: "– ";
+        color: black;
+        font-family: Arial, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 24pt;
+      }
+      li {
+        display: block;
+      }
+      #l18 {
+        padding-left: 0pt;
+        counter-reset: i1 1;
+      }
+      #l18 > li > *:first-child:before {
+        counter-increment: i1;
+        content: "(" counter(i1, decimal) ") ";
+        color: black;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+      }
+      #l18 > li:first-child > *:first-child:before {
+        counter-increment: i1 0;
+      }
+      #l19 {
+        padding-left: 0pt;
+        counter-reset: i2 1;
+      }
+      #l19 > li > *:first-child:before {
+        counter-increment: i2;
+        content: "(" counter(i2, decimal) ") ";
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 20pt;
+      }
+      #l19 > li:first-child > *:first-child:before {
+        counter-increment: i2 0;
+      }
+      #l20 {
+        padding-left: 0pt;
+        counter-reset: i3 1;
+      }
+      #l20 > li > *:first-child:before {
+        counter-increment: i3;
+        content: "(" counter(i3, decimal) ") ";
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 20pt;
+      }
+      #l20 > li:first-child > *:first-child:before {
+        counter-increment: i3 0;
+      }
+      li {
+        display: block;
+      }
+      #l21 {
+        padding-left: 0pt;
+      }
+      #l21 > li > *:first-child:before {
+        content: "• ";
+        color: black;
+        font-family: Arial, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 18pt;
+      }
+      #l22 {
+        padding-left: 0pt;
+      }
+      #l22 > li > *:first-child:before {
+        content: "• ";
+        color: black;
+        font-family: Arial, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 20pt;
+      }
+      #l23 {
+        padding-left: 0pt;
+      }
+      #l23 > li > *:first-child:before {
+        content: "• ";
+        color: black;
+        font-family: Arial, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 20pt;
+      }
+      li {
+        display: block;
+      }
+      #l24 {
+        padding-left: 0pt;
+      }
+      #l24 > li > *:first-child:before {
+        content: "• ";
+        color: black;
+        font-family: Arial, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+      }
+      #l25 {
+        padding-left: 0pt;
+      }
+      #l25 > li > *:first-child:before {
+        content: "• ";
+        color: black;
+        font-family: Arial, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+      }
+      #l26 {
+        padding-left: 0pt;
+        counter-reset: o1 1;
+      }
+      #l26 > li > *:first-child:before {
+        counter-increment: o1;
+        content: "(" counter(o1, decimal) ") ";
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 20pt;
+      }
+      #l26 > li:first-child > *:first-child:before {
+        counter-increment: o1 0;
+      }
+      #l27 {
+        padding-left: 0pt;
+        counter-reset: p1 1;
+      }
+      #l27 > li > *:first-child:before {
+        counter-increment: p1;
+        content: counter(p1, decimal) ". ";
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 20pt;
+      }
+      #l27 > li:first-child > *:first-child:before {
+        counter-increment: p1 0;
+      }
+      #l28 {
+        padding-left: 0pt;
+      }
+      #l28 > li > *:first-child:before {
+        content: "• ";
+        color: black;
+        font-family: Arial, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+      }
+      li {
+        display: block;
+      }
+      #l29 {
+        padding-left: 0pt;
+        counter-reset: q1 1;
+      }
+      #l29 > li > *:first-child:before {
+        counter-increment: q1;
+        content: counter(q1, decimal) ". ";
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 18pt;
+      }
+      #l29 > li:first-child > *:first-child:before {
+        counter-increment: q1 0;
+      }
+      #l30 {
+        padding-left: 0pt;
+      }
+      #l30 > li > *:first-child:before {
+        content: "• ";
+        color: black;
+        font-family: Arial, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 18pt;
+      }
+      #l31 {
+        padding-left: 0pt;
+      }
+      #l31 > li > *:first-child:before {
+        content: "• ";
+        color: black;
+        font-family: Arial, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 20pt;
+      }
+      #l32 {
+        padding-left: 0pt;
+      }
+      #l32 > li > *:first-child:before {
+        content: "• ";
+        color: black;
+        font-family: Arial, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 18pt;
+      }
+      #l33 {
+        padding-left: 0pt;
+      }
+      #l33 > li > *:first-child:before {
+        content: "• ";
+        color: black;
+        font-family: Arial, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 20pt;
+      }
+      #l34 {
+        padding-left: 0pt;
+      }
+      #l34 > li > *:first-child:before {
+        content: "• ";
+        color: black;
+        font-family: Arial, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 20pt;
+      }
+      #l35 {
+        padding-left: 0pt;
+        counter-reset: q2 1;
+      }
+      #l35 > li > *:first-child:before {
+        counter-increment: q2;
+        content: counter(q2, decimal) ". ";
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 20pt;
+      }
+      #l35 > li:first-child > *:first-child:before {
+        counter-increment: q2 0;
+      }
+      li {
+        display: block;
+      }
+      #l36 {
+        padding-left: 0pt;
+      }
+      #l36 > li > *:first-child:before {
+        content: "• ";
+        color: black;
+        font-family: Arial, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 20pt;
+      }
+      #l37 {
+        padding-left: 0pt;
+      }
+      #l37 > li > *:first-child:before {
+        content: "• ";
+        color: black;
+        font-family: Arial, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 20pt;
+      }
+      #l38 {
+        padding-left: 0pt;
+      }
+      #l38 > li > *:first-child:before {
+        content: "• ";
+        color: black;
+        font-family: Arial, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 20pt;
+      }
+    </style>
+  </head>
+  <body style="margin-left: 5%; margin-right: 5%">
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+    <p
+      class="s1"
+      style="
+        padding-top: 3pt;
+        padding-left: 73pt;
+        text-indent: 0pt;
+        text-align: left;
+      "
+    >
+      <a name="bookmark0">16MDSE7 - Image Processing</a>
+    </p>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+    <p
+      class="s1"
+      style="
+        padding-left: 160pt;
+        text-indent: 115pt;
+        line-height: 125%;
+        text-align: left;
+      "
+    >
+      Unit III Image Segmentation
+    </p>
+    <p
+      class="s1"
+      style="padding-left: 290pt; text-indent: 0pt; text-align: left"
+    >
+      <a name="bookmark1">Part 1</a>
+    </p>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+    <p
+      class="s3"
+      style="
+        padding-left: 92pt;
+        text-indent: 0pt;
+        line-height: 40pt;
+        text-align: center;
+      "
+    >
+      <a name="bookmark2">Outline</a>
+    </p>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+    <ul id="l1">
+      <li>
+        <p style="padding-left: 97pt; text-indent: -27pt; text-align: left">
+          Detection of Discontinuities
+        </p>
+      </li>
+      <li>
+        <p
+          style="
+            padding-top: 12pt;
+            padding-left: 97pt;
+            text-indent: -27pt;
+            text-align: left;
+          "
+        >
+          Edge Operators
+        </p>
+      </li>
+      <li>
+        <p
+          style="
+            padding-top: 12pt;
+            padding-left: 97pt;
+            text-indent: -27pt;
+            text-align: left;
+          "
+        >
+          Edge Linking and Boundary Detection
+        </p>
+      </li>
+      <li>
+        <p
+          style="
+            padding-top: 11pt;
+            padding-left: 97pt;
+            text-indent: -27pt;
+            text-align: left;
+          "
+        >
+          Thresholding
+        </p>
+      </li>
+    </ul>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+
+    <p
+      class="s4"
+      style="
+        padding-left: 92pt;
+        text-indent: 0pt;
+        line-height: 37pt;
+        text-align: center;
+      "
+    >
+      <a name="bookmark3">Image Segmentation</a>
+    </p>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+    <ul id="l2">
+      <li>
+        <p
+          style="
+            padding-left: 79pt;
+            text-indent: -27pt;
+            line-height: 125%;
+            text-align: left;
+          "
+        >
+          Segmentation subdivides an image into its constituent regions or
+          objects.
+        </p>
+      </li>
+      <li>
+        <p
+          style="
+            padding-top: 10pt;
+            padding-left: 79pt;
+            text-indent: -27pt;
+            line-height: 125%;
+            text-align: left;
+          "
+        >
+          Segmentation is stopped when the objects or regions of interest in an
+          application have been detected.
+        </p>
+      </li>
+      <li>
+        <p
+          style="
+            padding-top: 10pt;
+            padding-left: 79pt;
+            text-indent: -27pt;
+            line-height: 124%;
+            text-align: left;
+          "
+        >
+          Segmentation accuracy determines the eventual success or failure of
+          computerized analysis procedures.
+        </p>
+      </li>
+    </ul>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+
+    <p
+      class="s4"
+      style="
+        padding-left: 92pt;
+        text-indent: 0pt;
+        line-height: 36pt;
+        text-align: center;
+      "
+    >
+      Image Segmentation (Contd…)
+    </p>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+    <ul id="l3">
+      <li>
+        <p
+          style="
+            padding-left: 61pt;
+            text-indent: -27pt;
+            line-height: 124%;
+            text-align: left;
+          "
+        >
+          Most of the <b>segmentation algorithms </b>are based on one of two
+          basic properties of intensity values:
+        </p>
+        <ul id="l4">
+          <li>
+            <h2
+              style="
+                padding-top: 4pt;
+                padding-left: 92pt;
+                text-indent: -22pt;
+                text-align: left;
+              "
+            >
+              <a name="bookmark4">discontinuity </a><span class="p">and</span>
+            </h2>
+          </li>
+          <li>
+            <h2
+              style="
+                padding-top: 11pt;
+                padding-left: 92pt;
+                text-indent: -22pt;
+                text-align: left;
+              "
+            >
+              similarity
+            </h2>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p
+          style="
+            padding-top: 11pt;
+            padding-left: 61pt;
+            text-indent: -27pt;
+            line-height: 125%;
+            text-align: left;
+          "
+        >
+          In the first category, the approach is to partition an image based on
+          abrupt changes in intensity, such as edges.
+        </p>
+      </li>
+      <li>
+        <p
+          style="
+            padding-top: 4pt;
+            padding-left: 61pt;
+            text-indent: -27pt;
+            line-height: 125%;
+            text-align: left;
+          "
+        >
+          The second category are based on partitioning an image into regions
+          that are similar according to a set of predefined criteria.
+        </p>
+      </li>
+      <li>
+        <p
+          style="
+            padding-top: 4pt;
+            padding-left: 61pt;
+            text-indent: -27pt;
+            line-height: 125%;
+            text-align: left;
+          "
+        >
+          Thresholding, region growing, and region splitting and merging are
+          examples of methods in this category.
+        </p>
+      </li>
+    </ul>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+
+    <p
+      class="s4"
+      style="
+        padding-left: 92pt;
+        text-indent: 0pt;
+        line-height: 36pt;
+        text-align: center;
+      "
+    >
+      Image Segmentation (Contd…)
+    </p>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+    <p style="text-indent: 0pt; text-align: left">
+      <span
+        ><img
+          width="788"
+          height="406"
+          alt="image"
+          src="U3%20-%20Image%20Segmentation_files/Image_001.jpg"
+      /></span>
+    </p>
+    <p style="text-indent: 0pt; line-height: 20pt; text-align: left">
+      Fundamentals
+    </p>
+    <p style="text-indent: 0pt; text-align: left" />
+    <h2
+      style="
+        padding-left: 46pt;
+        text-indent: 0pt;
+        line-height: 25pt;
+        text-align: left;
+      "
+    >
+      <a name="bookmark5">Fundamentals</a>
+    </h2>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+    <p
+      style="
+        padding-top: 14pt;
+        padding-left: 46pt;
+        text-indent: 0pt;
+        line-height: 112%;
+        text-align: left;
+      "
+    >
+      Two regions R<span class="s5">i</span><span class="s6"> </span>and R<span
+        class="s5"
+        >j </span
+      >are said to be <span class="s7">adjacent, </span>if their union forms a
+      connected set.
+    </p>
+
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+    <p style="padding-left: 28pt; text-indent: 0pt; text-align: left">
+      Conditions
+    </p>
+    <p
+      class="s4"
+      style="
+        padding-left: 24pt;
+        text-indent: 0pt;
+        line-height: 36pt;
+        text-align: left;
+      "
+    >
+      Image Segmentation (Contd…)
+    </p>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+    <ul id="l5">
+      <li>
+        <p
+          style="
+            padding-left: 55pt;
+            text-indent: -27pt;
+            line-height: 126%;
+            text-align: left;
+          "
+        >
+          Condition (a) indicates that the segmentation must be complete; that
+          is, every pixel must be in a region.
+        </p>
+      </li>
+      <li>
+        <p
+          style="
+            padding-top: 3pt;
+            padding-left: 55pt;
+            text-indent: -27pt;
+            line-height: 124%;
+            text-align: left;
+          "
+        >
+          Condition (b) requires that points in a region be connected in some
+          predefined sense (e.g., the points must be 4- or 8-connected).
+        </p>
+      </li>
+      <li>
+        <p
+          style="
+            padding-top: 5pt;
+            padding-left: 55pt;
+            text-indent: -27pt;
+            text-align: left;
+          "
+        >
+          Condition (c) indicates that the regions must be disjoint.
+        </p>
+      </li>
+      <li>
+        <p
+          style="
+            padding-top: 11pt;
+            padding-left: 55pt;
+            text-indent: -27pt;
+            line-height: 119%;
+            text-align: justify;
+          "
+        >
+          Condition (d) deals with the properties that must be satisfied by the
+          pixels in a segmented region—for example, Q(R<span class="s5">i</span
+          >)=TRUE, if all pixels in R<span class="s5">i </span>have the same
+          intensity level.
+        </p>
+      </li>
+      <li>
+        <p
+          style="
+            padding-top: 6pt;
+            padding-left: 55pt;
+            text-indent: -27pt;
+            line-height: 113%;
+            text-align: justify;
+          "
+        >
+          Finally, condition (e) indicates that two adjacent regions R<span
+            class="s5"
+            >i</span
+          ><span class="s6"> </span>and R<span class="s5">j</span
+          ><span class="s6"> </span>must be different in the sense of predicate
+          Q.
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p
+          class="s2"
+          style="padding-left: 5pt; text-indent: 0pt; text-align: left"
+        >
+          [Type text]
+        </p>
+        <p
+          class="s4"
+          style="
+            padding-left: 92pt;
+            text-indent: 0pt;
+            line-height: 36pt;
+            text-align: center;
+          "
+        >
+          Image Segmentation (Contd…)
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <ul id="l6">
+          <li>
+            <p
+              style="
+                padding-left: 73pt;
+                text-indent: -27pt;
+                line-height: 125%;
+                text-align: justify;
+              "
+            >
+              Segmentation algorithms for monochrome images generally are based
+              on one of two basic categories dealing with properties of
+              intensity values: <b>discontinuity and similarity</b>.
+            </p>
+          </li>
+          <li>
+            <p
+              style="
+                padding-top: 4pt;
+                padding-left: 73pt;
+                text-indent: -27pt;
+                line-height: 124%;
+                text-align: justify;
+              "
+            >
+              In the first category, the assumption is that boundaries of
+              regions are sufficiently different from each other and from the
+              background to allow boundary detection based on local
+              discontinuities in intensity.
+            </p>
+          </li>
+          <li>
+            <h2
+              style="
+                padding-top: 5pt;
+                padding-left: 73pt;
+                text-indent: -27pt;
+                line-height: 124%;
+                text-align: justify;
+              "
+            >
+              Edge-based segmentation
+              <span class="p"
+                >is the principal approach used in this category.</span
+              >
+            </h2>
+          </li>
+          <li>
+            <h2
+              style="
+                padding-top: 5pt;
+                padding-left: 73pt;
+                text-indent: -27pt;
+                line-height: 124%;
+                text-align: justify;
+              "
+            >
+              Region-based segmentation
+              <span class="p"
+                >approaches in the second category are based on partitioning an
+                image into regions that are similar according to a set of
+                predefined criteria.</span
+              >
+            </h2>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+
+    <p
+      class="s4"
+      style="
+        padding-left: 92pt;
+        text-indent: 0pt;
+        line-height: 36pt;
+        text-align: center;
+      "
+    >
+      Image Segmentation (Contd…)
+    </p>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+    <p style="padding-left: 46pt; text-indent: 0pt; text-align: left">
+      <span
+        ><img
+          width="761"
+          height="577"
+          alt="image"
+          src="U3%20-%20Image%20Segmentation_files/Image_002.jpg"
+      /></span>
+    </p>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+
+    <p
+      class="s8"
+      style="
+        padding-left: 92pt;
+        text-indent: 0pt;
+        line-height: 37pt;
+        text-align: center;
+      "
+    >
+      <a name="bookmark6">Point, Line, and Edge Detection</a>
+    </p>
+    <ul id="l7">
+      <li>
+        <p
+          class="s9"
+          style="
+            padding-top: 4pt;
+            padding-left: 49pt;
+            text-indent: -27pt;
+            text-align: left;
+          "
+        >
+          The three types of image features in which we are interested are
+        </p>
+        <ul id="l8">
+          <li>
+            <p
+              class="s9"
+              style="
+                padding-top: 10pt;
+                padding-left: 94pt;
+                text-indent: -36pt;
+                text-align: left;
+              "
+            >
+              isolated points
+            </p>
+          </li>
+          <li>
+            <p
+              class="s9"
+              style="
+                padding-top: 10pt;
+                padding-left: 94pt;
+                text-indent: -36pt;
+                text-align: left;
+              "
+            >
+              lines
+            </p>
+          </li>
+          <li>
+            <p
+              class="s9"
+              style="
+                padding-top: 10pt;
+                padding-left: 94pt;
+                text-indent: -36pt;
+                text-align: left;
+              "
+            >
+              edges
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h3
+          style="
+            padding-top: 10pt;
+            padding-left: 49pt;
+            text-indent: -27pt;
+            line-height: 125%;
+            text-align: left;
+          "
+        >
+          Edge pixels
+          <span class="s9"
+            >are pixels at which the intensity of an image function changes
+            abruptly, and edges (or edge segments) are sets of connected edge
+            pixels.</span
+          >
+        </h3>
+      </li>
+      <li>
+        <h3
+          style="
+            padding-top: 4pt;
+            padding-left: 49pt;
+            text-indent: -27pt;
+            text-align: left;
+          "
+        >
+          Edge detectors
+          <span class="s9"
+            >are local image processing methods designed to detect edge
+            pixels.</span
+          >
+        </h3>
+      </li>
+      <li>
+        <p
+          class="s9"
+          style="
+            padding-top: 10pt;
+            padding-left: 49pt;
+            text-indent: -27pt;
+            line-height: 125%;
+            text-align: justify;
+          "
+        >
+          A <b>line </b>may be viewed as an edge segment in which the intensity
+          of the background on either side of the line is either much higher or
+          much lower than the intensity of the line pixels. Lines give rise to
+          so-called “roof edges.”
+        </p>
+      </li>
+      <li>
+        <p
+          class="s9"
+          style="
+            padding-top: 4pt;
+            padding-left: 49pt;
+            text-indent: -27pt;
+            line-height: 125%;
+            text-align: justify;
+          "
+        >
+          An <b>isolated point </b>may be viewed as a line whose length and
+          width are equal to one pixel.
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p
+          class="s8"
+          style="
+            padding-left: 73pt;
+            text-indent: 0pt;
+            line-height: 36pt;
+            text-align: left;
+          "
+        >
+          Point, Line, and Edge Detection (Contd…)
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+      </li>
+      <li>
+        <p
+          class="s9"
+          style="padding-left: 49pt; text-indent: -27pt; text-align: left"
+        >
+          Local changes in intensity can be detected using derivatives.
+        </p>
+      </li>
+      <li>
+        <p
+          class="s9"
+          style="
+            padding-top: 10pt;
+            padding-left: 49pt;
+            text-indent: -27pt;
+            text-align: left;
+          "
+        >
+          First- and Second-order derivatives are particularly well suited for
+          this purpose.
+        </p>
+      </li>
+      <li>
+        <p
+          class="s9"
+          style="
+            padding-top: 10pt;
+            padding-left: 49pt;
+            text-indent: -27pt;
+            text-align: left;
+          "
+        >
+          First-order derivative
+        </p>
+        <ol id="l9">
+          <li>
+            <p
+              class="s9"
+              style="
+                padding-top: 10pt;
+                padding-left: 73pt;
+                text-indent: -24pt;
+                text-align: left;
+              "
+            >
+              must be zero in areas of constant intensity;
+            </p>
+          </li>
+          <li>
+            <p
+              class="s9"
+              style="
+                padding-top: 10pt;
+                padding-left: 73pt;
+                text-indent: -24pt;
+                text-align: left;
+              "
+            >
+              must be nonzero at the onset of an intensity step or ramp; and
+            </p>
+          </li>
+          <li>
+            <p
+              class="s9"
+              style="
+                padding-top: 10pt;
+                padding-left: 73pt;
+                text-indent: -24pt;
+                text-align: left;
+              "
+            >
+              must be nonzero at points along an intensity ramp.
+            </p>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <p
+          class="s9"
+          style="
+            padding-top: 10pt;
+            padding-left: 49pt;
+            text-indent: -27pt;
+            text-align: left;
+          "
+        >
+          Second-order derivative
+        </p>
+        <ol id="l10">
+          <li>
+            <p
+              class="s9"
+              style="
+                padding-top: 10pt;
+                padding-left: 73pt;
+                text-indent: -24pt;
+                text-align: left;
+              "
+            >
+              must be zero in areas of constant intensity;
+            </p>
+          </li>
+          <li>
+            <p
+              class="s9"
+              style="
+                padding-top: 10pt;
+                padding-left: 73pt;
+                text-indent: -24pt;
+                text-align: left;
+              "
+            >
+              must be nonzero at the onset
+              <span class="s10">and end of an intensity step or ramp; and</span>
+            </p>
+          </li>
+          <li>
+            <p
+              class="s10"
+              style="
+                padding-top: 10pt;
+                padding-left: 73pt;
+                text-indent: -24pt;
+                text-align: left;
+              "
+            >
+              must be zero along intensity <span class="s9">ramps.</span>
+            </p>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+            <p
+              class="s2"
+              style="padding-left: 5pt; text-indent: 0pt; text-align: left"
+            >
+              [Type text]
+            </p>
+            <p
+              class="s8"
+              style="
+                padding-left: 73pt;
+                text-indent: 0pt;
+                line-height: 36pt;
+                text-align: left;
+              "
+            >
+              Point, Line, and Edge Detection (Contd…)
+            </p>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <p
+          class="s9"
+          style="
+            padding-top: 2pt;
+            padding-left: 49pt;
+            text-indent: -27pt;
+            line-height: 124%;
+            text-align: left;
+          "
+        >
+          The approximation to the first-order derivative at point of a
+          one-dimensional function f(x) is given as
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p style="padding-left: 166pt; text-indent: 0pt; text-align: left">
+          <span
+            ><img
+              width="517"
+              height="47"
+              alt="image"
+              src="U3%20-%20Image%20Segmentation_files/Image_003.jpg"
+          /></span>
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p style="text-indent: 0pt; text-align: left">
+          <span
+            ><img
+              width="505"
+              height="47"
+              alt="image"
+              src="U3%20-%20Image%20Segmentation_files/Image_004.jpg"
+          /></span>
+        </p>
+      </li>
+      <li>
+        <p
+          class="s9"
+          style="
+            padding-left: 49pt;
+            text-indent: -27pt;
+            line-height: 125%;
+            text-align: left;
+          "
+        >
+          We obtain an expression for the second derivative by differentiating
+          Eq.(10.2-1) with respect to
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+      </li>
+      <li>
+        <p
+          class="s9"
+          style="
+            padding-left: 49pt;
+            text-indent: -27pt;
+            line-height: 124%;
+            text-align: left;
+          "
+        >
+          Figure 10.2(a) shows an image that contains various solid objects, a
+          line, and a single noise point.
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p
+          class="s2"
+          style="padding-left: 5pt; text-indent: 0pt; text-align: left"
+        >
+          [Type text]
+        </p>
+        <p
+          class="s8"
+          style="
+            padding-left: 5pt;
+            text-indent: 0pt;
+            line-height: 36pt;
+            text-align: left;
+          "
+        >
+          Point, Line, and Edge Detection (Contd…)
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p style="padding-left: 22pt; text-indent: 0pt; text-align: left">
+          <span
+            ><img
+              width="681"
+              height="560"
+              alt="image"
+              src="U3%20-%20Image%20Segmentation_files/Image_005.jpg"
+          /></span>
+        </p>
+        <p
+          class="s8"
+          style="
+            padding-left: 73pt;
+            text-indent: 0pt;
+            line-height: 36pt;
+            text-align: left;
+          "
+        >
+          Point, Line, and Edge Detection (Contd…)
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p
+          style="
+            padding-left: 28pt;
+            text-indent: 0pt;
+            line-height: 25pt;
+            text-align: left;
+          "
+        >
+          In summary, we arrive at the following conclusions:
+        </p>
+        <ol id="l11">
+          <ol id="l12">
+            <li>
+              <p
+                style="
+                  padding-top: 11pt;
+                  padding-left: 81pt;
+                  text-indent: -26pt;
+                  text-align: left;
+                "
+              >
+                First-order derivatives generally produce thicker edges in an
+                image.
+              </p>
+            </li>
+            <li>
+              <p
+                style="
+                  padding-top: 12pt;
+                  padding-left: 55pt;
+                  text-indent: 0pt;
+                  line-height: 124%;
+                  text-align: left;
+                "
+              >
+                Second-order derivatives have a stronger response to fine
+                detail, such as thin lines, isolated points, and noise.
+              </p>
+            </li>
+            <li>
+              <p
+                style="
+                  padding-top: 5pt;
+                  padding-left: 55pt;
+                  text-indent: 0pt;
+                  line-height: 125%;
+                  text-align: left;
+                "
+              >
+                Second-order derivatives produce a double-edge response at ramp
+                and step transitions in intensity.
+              </p>
+            </li>
+            <li>
+              <p
+                style="
+                  padding-top: 4pt;
+                  padding-left: 55pt;
+                  text-indent: 0pt;
+                  line-height: 124%;
+                  text-align: left;
+                "
+              >
+                The sign of the second derivative can be used to determine
+                whether a transition into an edge is from light to dark or dark
+                to light.
+              </p>
+              <p style="text-indent: 0pt; text-align: left"><br /></p>
+              <p
+                class="s2"
+                style="padding-left: 5pt; text-indent: 0pt; text-align: left"
+              >
+                [Type text]
+              </p>
+              <p
+                class="s8"
+                style="
+                  padding-left: 73pt;
+                  text-indent: 0pt;
+                  line-height: 36pt;
+                  text-align: left;
+                "
+              >
+                Point, Line, and Edge Detection (Contd…)
+              </p>
+            </li>
+          </ol>
+        </ol>
+      </li>
+      <li>
+        <p
+          class="s9"
+          style="
+            padding-top: 2pt;
+            padding-left: 49pt;
+            text-indent: -27pt;
+            line-height: 124%;
+            text-align: justify;
+          "
+        >
+          The approach of choice for computing first and second derivatives at
+          every pixel location in an image is to use spatial filters.
+        </p>
+      </li>
+      <li>
+        <p
+          class="s9"
+          style="
+            padding-top: 4pt;
+            padding-left: 49pt;
+            text-indent: -27pt;
+            line-height: 124%;
+            text-align: justify;
+          "
+        >
+          For the filter mask in Fig. 10.3, the procedure is to compute the sum
+          of products of the mask coefficients with the intensity values in the
+          region encompassed by the mask.
+        </p>
+      </li>
+      <li>
+        <p
+          class="s9"
+          style="
+            padding-top: 4pt;
+            padding-left: 49pt;
+            text-indent: -27pt;
+            text-align: left;
+          "
+        >
+          That is, the
+          <span class="s10"
+            >response of the mask at the center point of the region is</span
+          >
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p style="padding-left: 134pt; text-indent: 0pt; text-align: left">
+          <span
+            ><img
+              width="498"
+              height="88"
+              alt="image"
+              src="U3%20-%20Image%20Segmentation_files/Image_006.jpg"
+          /></span>
+        </p>
+        <p style="text-indent: 0pt; text-align: left">
+          <span
+            ><img
+              width="353"
+              height="157"
+              alt="image"
+              src="U3%20-%20Image%20Segmentation_files/Image_007.jpg"
+          /></span>
+        </p>
+        <p
+          class="s9"
+          style="
+            padding-top: 9pt;
+            padding-left: 49pt;
+            text-indent: 0pt;
+            line-height: 113%;
+            text-align: left;
+          "
+        >
+          where Z<span class="s11">k</span><span class="s12"> </span>is the
+          intensity of the pixel whose spatial location corresponds to the
+          location of the <span class="s10">kth coefficient in the mask.</span>
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p
+          class="s2"
+          style="padding-left: 5pt; text-indent: 0pt; text-align: left"
+        >
+          [Type text]
+        </p>
+        <p
+          class="s8"
+          style="
+            padding-left: 92pt;
+            text-indent: 0pt;
+            line-height: 37pt;
+            text-align: center;
+          "
+        >
+          <a name="bookmark7">Detection of Isolated Points</a>
+        </p>
+      </li>
+      <li>
+        <p
+          class="s9"
+          style="
+            padding-top: 16pt;
+            padding-left: 49pt;
+            text-indent: -27pt;
+            line-height: 124%;
+            text-align: left;
+          "
+        >
+          We know that point detection should be based on the second derivative
+          using the Laplacian:
+        </p>
+      </li>
+    </ul>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+    <p style="padding-left: 90pt; text-indent: 0pt; text-align: left">
+      <span
+        ><img
+          width="613"
+          height="76"
+          alt="image"
+          src="U3%20-%20Image%20Segmentation_files/Image_008.jpg"
+      /></span>
+    </p>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+    <p style="padding-left: 28pt; text-indent: 0pt; text-align: left">
+      <span
+        ><img
+          width="822"
+          height="144"
+          alt="image"
+          src="U3%20-%20Image%20Segmentation_files/Image_009.jpg"
+      /></span>
+    </p>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+
+    <p
+      class="s8"
+      style="
+        padding-left: 92pt;
+        text-indent: 0pt;
+        line-height: 36pt;
+        text-align: center;
+      "
+    >
+      Detection of Isolated Points (Contd…)
+    </p>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+    <ul id="l13">
+      <li>
+        <p
+          class="s9"
+          style="
+            padding-left: 73pt;
+            text-indent: -27pt;
+            line-height: 125%;
+            text-align: justify;
+          "
+        >
+          Using the Laplacian mask in Fig. 10.4(a), we say that a point has been
+          detected at the location (x,y) on which the mask is centered if the
+          absolute value of the response of the mask at that point exceeds a
+          specified threshold.
+        </p>
+      </li>
+      <li>
+        <p
+          class="s9"
+          style="
+            padding-top: 4pt;
+            padding-left: 73pt;
+            text-indent: -27pt;
+            line-height: 124%;
+            text-align: justify;
+          "
+        >
+          Such points are labeled 1 in the output image and all others are
+          labeled 0, thus producing a binary image.
+        </p>
+        <p style="text-indent: 0pt; text-align: left">
+          <span
+            ><img
+              width="491"
+              height="64"
+              alt="image"
+              src="U3%20-%20Image%20Segmentation_files/Image_010.jpg"
+          /></span>
+        </p>
+      </li>
+      <li>
+        <p
+          class="s9"
+          style="
+            padding-top: 4pt;
+            padding-left: 73pt;
+            text-indent: -27pt;
+            text-align: justify;
+          "
+        >
+          In other words, the output is obtained using the following expression:
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p
+          class="s9"
+          style="
+            padding-top: 17pt;
+            padding-left: 73pt;
+            text-indent: 0pt;
+            line-height: 125%;
+            text-align: left;
+          "
+        >
+          where g is the output image, Tis a nonnegative threshold, and R is
+          given by the Eq. (10.2-3).
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p
+          class="s2"
+          style="padding-left: 5pt; text-indent: 0pt; text-align: left"
+        >
+          [Type text]
+        </p>
+        <p
+          class="s8"
+          style="
+            padding-left: 92pt;
+            text-indent: 0pt;
+            line-height: 36pt;
+            text-align: center;
+          "
+        >
+          Detection of Isolated Points (Contd…)
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p style="padding-left: 55pt; text-indent: 0pt; text-align: left">
+          <span
+            ><img
+              width="778"
+              height="505"
+              alt="image"
+              src="U3%20-%20Image%20Segmentation_files/Image_011.jpg"
+          /></span>
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p
+          class="s2"
+          style="padding-left: 5pt; text-indent: 0pt; text-align: left"
+        >
+          [Type text]
+        </p>
+        <p
+          class="s4"
+          style="
+            padding-left: 92pt;
+            text-indent: 0pt;
+            line-height: 37pt;
+            text-align: center;
+          "
+        >
+          <a name="bookmark8">Line Detection</a>
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p style="text-indent: 0pt; text-align: left">
+          <span
+            ><img
+              width="692"
+              height="396"
+              alt="image"
+              src="U3%20-%20Image%20Segmentation_files/Image_012.jpg"
+          /></span>
+        </p>
+      </li>
+      <li>
+        <p
+          style="
+            padding-left: 73pt;
+            text-indent: -27pt;
+            line-height: 125%;
+            text-align: justify;
+          "
+        >
+          We know that for line detection we can expect second derivatives to
+          result in a stronger response and to produce thinner lines than first
+          derivatives.
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p
+          class="s2"
+          style="
+            padding-top: 14pt;
+            padding-left: 5pt;
+            text-indent: 0pt;
+            text-align: left;
+          "
+        >
+          [Type text]
+        </p>
+        <p
+          class="s4"
+          style="
+            padding-left: 92pt;
+            text-indent: 0pt;
+            line-height: 37pt;
+            text-align: center;
+          "
+        >
+          <a name="bookmark9">Line Detection (Contd…)</a>
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p style="padding-left: 37pt; text-indent: 0pt; text-align: left">
+          <span
+            ><img
+              width="794"
+              height="299"
+              alt="image"
+              src="U3%20-%20Image%20Segmentation_files/Image_013.jpg"
+          /></span>
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p
+          class="s2"
+          style="padding-left: 5pt; text-indent: 0pt; text-align: left"
+        >
+          [Type text]
+        </p>
+        <p
+          class="s4"
+          style="
+            padding-left: 92pt;
+            text-indent: 0pt;
+            line-height: 37pt;
+            text-align: center;
+          "
+        >
+          Edge Models
+        </p>
+      </li>
+      <li>
+        <p
+          style="
+            padding-top: 10pt;
+            padding-left: 73pt;
+            text-indent: -27pt;
+            line-height: 124%;
+            text-align: left;
+          "
+        >
+          Edge detection is the approach used most frequently for segmenting
+          images based on abrupt (local) changes in intensity.
+        </p>
+      </li>
+    </ul>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+    <p
+      class="s13"
+      style="padding-left: 47pt; text-indent: 0pt; text-align: left"
+    >
+      <span
+        ><img
+          width="638"
+          height="277"
+          alt="image"
+          src="U3%20-%20Image%20Segmentation_files/Image_014.jpg"
+      /></span>
+      <span
+        ><img
+          width="130"
+          height="210"
+          alt="image"
+          src="U3%20-%20Image%20Segmentation_files/Image_015.jpg"
+      /></span>
+    </p>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+
+    <p
+      class="s4"
+      style="
+        padding-left: 92pt;
+        text-indent: 0pt;
+        line-height: 36pt;
+        text-align: center;
+      "
+    >
+      Edge Models (Contd…)
+    </p>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+    <p style="padding-left: 47pt; text-indent: 0pt; text-align: left">
+      <span
+        ><img
+          width="795"
+          height="476"
+          alt="image"
+          src="U3%20-%20Image%20Segmentation_files/Image_016.jpg"
+      /></span>
+    </p>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+
+    <p
+      class="s4"
+      style="
+        padding-left: 50pt;
+        text-indent: 0pt;
+        line-height: 36pt;
+        text-align: left;
+      "
+    >
+      Edge Models (Contd…)
+    </p>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+    <p style="padding-left: 5pt; text-indent: 0pt; text-align: left">
+      <span
+        ><img
+          width="487"
+          height="574"
+          alt="image"
+          src="U3%20-%20Image%20Segmentation_files/Image_017.jpg"
+      /></span>
+    </p>
+    <p
+      class="s4"
+      style="
+        padding-left: 92pt;
+        text-indent: 0pt;
+        line-height: 36pt;
+        text-align: center;
+      "
+    >
+      <a name="bookmark10">Basic Edge Detection</a>
+    </p>
+    <ul id="l14">
+      <li>
+        <p
+          style="
+            padding-left: 55pt;
+            text-indent: -27pt;
+            line-height: 28pt;
+            text-align: left;
+          "
+        >
+          Detecting changes in intensity for the purpose of finding edges can be
+        </p>
+        <p
+          style="
+            padding-top: 6pt;
+            padding-left: 55pt;
+            text-indent: 0pt;
+            text-align: left;
+          "
+        >
+          accomplished using first- or second-order derivatives.
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p style="padding-left: 64pt; text-indent: 0pt; text-align: left">
+          <span
+            ><img
+              width="761"
+              height="353"
+              alt="image"
+              src="U3%20-%20Image%20Segmentation_files/Image_018.jpg"
+          /></span>
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p style="padding-left: 66pt; text-indent: 0pt; text-align: left">
+          <span
+            ><img
+              width="733"
+              height="107"
+              alt="image"
+              src="U3%20-%20Image%20Segmentation_files/Image_019.jpg"
+          /></span>
+        </p>
+        <p
+          class="s2"
+          style="
+            padding-top: 6pt;
+            padding-left: 5pt;
+            text-indent: 0pt;
+            text-align: left;
+          "
+        >
+          [Type text]
+        </p>
+        <p
+          class="s4"
+          style="
+            padding-left: 92pt;
+            text-indent: 0pt;
+            line-height: 36pt;
+            text-align: center;
+          "
+        >
+          Edge Detection (Contd…)
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p style="padding-left: 50pt; text-indent: 0pt; text-align: left">
+          <span
+            ><img
+              width="761"
+              height="409"
+              alt="image"
+              src="U3%20-%20Image%20Segmentation_files/Image_020.jpg"
+          /></span>
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p
+          class="s2"
+          style="padding-left: 5pt; text-indent: 0pt; text-align: left"
+        >
+          [Type text]
+        </p>
+        <p
+          class="s4"
+          style="
+            padding-left: 92pt;
+            text-indent: 0pt;
+            line-height: 36pt;
+            text-align: center;
+          "
+        >
+          Edge Detection (Contd…)
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p style="padding-left: 42pt; text-indent: 0pt; text-align: left">
+          <span
+            ><img
+              width="739"
+              height="325"
+              alt="image"
+              src="U3%20-%20Image%20Segmentation_files/Image_021.jpg"
+          /></span>
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p
+          class="s14"
+          style="padding-left: 191pt; text-indent: 0pt; text-align: left"
+        >
+          <span
+            ><img
+              width="241"
+              height="112"
+              alt="image"
+              src="U3%20-%20Image%20Segmentation_files/Image_022.jpg"
+          /></span>
+          <span
+            ><img
+              width="140"
+              height="153"
+              alt="image"
+              src="U3%20-%20Image%20Segmentation_files/Image_023.jpg"
+          /></span>
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p
+          class="s2"
+          style="padding-left: 5pt; text-indent: 0pt; text-align: left"
+        >
+          [Type text]
+        </p>
+        <p
+          class="s4"
+          style="
+            padding-left: 92pt;
+            text-indent: 0pt;
+            line-height: 36pt;
+            text-align: center;
+          "
+        >
+          Edge Detection (Contd…)
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p style="padding-left: 43pt; text-indent: 0pt; text-align: left">
+          <span
+            ><img
+              width="710"
+              height="544"
+              alt="image"
+              src="U3%20-%20Image%20Segmentation_files/Image_024.jpg"
+          /></span>
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p
+          class="s2"
+          style="padding-left: 5pt; text-indent: 0pt; text-align: left"
+        >
+          [Type text]
+        </p>
+        <p
+          class="s4"
+          style="
+            padding-left: 92pt;
+            text-indent: 0pt;
+            line-height: 36pt;
+            text-align: center;
+          "
+        >
+          Edge Detection (Contd…)
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p style="padding-left: 47pt; text-indent: 0pt; text-align: left">
+          <span
+            ><img
+              width="801"
+              height="444"
+              alt="image"
+              src="U3%20-%20Image%20Segmentation_files/Image_025.jpg"
+          /></span>
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p
+          class="s2"
+          style="padding-left: 5pt; text-indent: 0pt; text-align: left"
+        >
+          [Type text]
+        </p>
+        <p
+          class="s4"
+          style="
+            padding-left: 92pt;
+            text-indent: 0pt;
+            line-height: 36pt;
+            text-align: center;
+          "
+        >
+          Edge Detection (Contd…)
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p style="padding-left: 48pt; text-indent: 0pt; text-align: left">
+          <span
+            ><img
+              width="763"
+              height="571"
+              alt="image"
+              src="U3%20-%20Image%20Segmentation_files/Image_026.jpg"
+          /></span>
+        </p>
+        <p
+          class="s2"
+          style="
+            padding-top: 1pt;
+            padding-left: 5pt;
+            text-indent: 0pt;
+            text-align: left;
+          "
+        >
+          [Type text]
+        </p>
+        <p
+          class="s4"
+          style="
+            padding-bottom: 3pt;
+            padding-left: 92pt;
+            text-indent: 0pt;
+            line-height: 36pt;
+            text-align: center;
+          "
+        >
+          Edge Detection (Contd…)
+        </p>
+        <p style="padding-left: 45pt; text-indent: 0pt; text-align: left">
+          <span
+            ><img
+              width="773"
+              height="571"
+              alt="image"
+              src="U3%20-%20Image%20Segmentation_files/Image_027.jpg"
+          /></span>
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p
+          class="s2"
+          style="padding-left: 5pt; text-indent: 0pt; text-align: left"
+        >
+          [Type text]
+        </p>
+        <p
+          class="s4"
+          style="
+            padding-left: 92pt;
+            text-indent: 0pt;
+            line-height: 36pt;
+            text-align: center;
+          "
+        >
+          Edge Detection (Contd…)
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p style="padding-left: 46pt; text-indent: 0pt; text-align: left">
+          <span
+            ><img
+              width="698"
+              height="387"
+              alt="image"
+              src="U3%20-%20Image%20Segmentation_files/Image_028.jpg"
+          /></span>
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p
+          class="s2"
+          style="padding-left: 5pt; text-indent: 0pt; text-align: left"
+        >
+          [Type text]
+        </p>
+        <p
+          class="s4"
+          style="
+            padding-left: 92pt;
+            text-indent: 0pt;
+            line-height: 36pt;
+            text-align: center;
+          "
+        >
+          Edge Detection (Contd…)
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p style="padding-left: 51pt; text-indent: 0pt; text-align: left">
+          <span
+            ><img
+              width="768"
+              height="531"
+              alt="image"
+              src="U3%20-%20Image%20Segmentation_files/Image_029.jpg"
+          /></span>
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p
+          class="s4"
+          style="
+            padding-left: 92pt;
+            text-indent: 0pt;
+            line-height: 37pt;
+            text-align: center;
+          "
+        >
+          <a name="bookmark11">Edge Linking and Boundary Detection</a>
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <ul id="l15">
+          <li>
+            <p
+              class="s15"
+              style="
+                padding-left: 73pt;
+                text-indent: -27pt;
+                line-height: 125%;
+                text-align: justify;
+              "
+            >
+              Edge detection should yield sets of pixels lying only on edges.
+            </p>
+          </li>
+          <li>
+            <p
+              class="s15"
+              style="
+                padding-top: 5pt;
+                padding-left: 73pt;
+                text-indent: -27pt;
+                line-height: 125%;
+                text-align: justify;
+              "
+            >
+              In practice, these pixels seldom characterize edges completely
+              because of noise, breaks in the edges due to nonuniform
+              illumination, and other effects that introduce spurious
+              discontinuities in intensity values.
+            </p>
+          </li>
+          <li>
+            <p
+              class="s15"
+              style="
+                padding-top: 5pt;
+                padding-left: 73pt;
+                text-indent: -27pt;
+                line-height: 124%;
+                text-align: justify;
+              "
+            >
+              Therefore, edge detection typically is followed by linking
+              algorithms designed to assemble edge pixels into meaningful edges
+              and/or region boundaries.
+            </p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+
+    <p
+      class="s4"
+      style="
+        padding-left: 32pt;
+        text-indent: 0pt;
+        line-height: 36pt;
+        text-align: left;
+      "
+    >
+      Edge Linking and Boundary Detection (Contd…)
+    </p>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+    <ul id="l16">
+      <li>
+        <p
+          class="s15"
+          style="
+            padding-top: 7pt;
+            padding-left: 67pt;
+            text-indent: -27pt;
+            line-height: 125%;
+            text-align: left;
+          "
+        >
+          Three fundamental approaches to edge linking that are representative
+          of techniques used in practice are
+        </p>
+        <ul id="l17">
+          <li>
+            <p
+              class="s16"
+              style="
+                padding-top: 5pt;
+                padding-left: 98pt;
+                text-indent: -22pt;
+                line-height: 125%;
+                text-align: left;
+              "
+            >
+              <span class="s15"
+                >The first requires knowledge about edge points in a local
+                region (e.g., a 3 x 3 neighborhood);</span
+              >
+            </p>
+          </li>
+          <li>
+            <p
+              class="s16"
+              style="
+                padding-top: 5pt;
+                padding-left: 98pt;
+                text-indent: -22pt;
+                line-height: 124%;
+                text-align: left;
+              "
+            >
+              <span class="s15"
+                >the second requires that points on the boundary of a region be
+                known; and</span
+              >
+            </p>
+          </li>
+          <li>
+            <p
+              class="s16"
+              style="
+                padding-top: 6pt;
+                padding-left: 98pt;
+                text-indent: -22pt;
+                line-height: 124%;
+                text-align: left;
+              "
+            >
+              <span class="s15"
+                >the third is a global approach that works with an entire edge
+                image.</span
+              >
+            </p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+
+    <p
+      class="s4"
+      style="
+        padding-left: 32pt;
+        text-indent: 0pt;
+        line-height: 36pt;
+        text-align: left;
+      "
+    >
+      Edge Linking and Boundary Detection (Contd…)
+    </p>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+    <h2
+      style="
+        padding-left: 46pt;
+        text-indent: 0pt;
+        line-height: 25pt;
+        text-align: left;
+      "
+    >
+      <a name="bookmark12">Local Processing</a>
+    </h2>
+    <p
+      style="
+        padding-top: 11pt;
+        padding-left: 53pt;
+        text-indent: -7pt;
+        line-height: 125%;
+        text-align: left;
+      "
+    >
+      The two principal properties used for establishing similarity of edge
+      pixels in this kind of analysis are
+    </p>
+    <ol id="l18">
+      <ol id="l19">
+        <ol id="l20">
+          <li>
+            <p
+              style="
+                padding-top: 4pt;
+                padding-left: 99pt;
+                text-indent: -26pt;
+                text-align: left;
+              "
+            >
+              the strength (magnitude) and
+            </p>
+          </li>
+          <li>
+            <p
+              style="
+                padding-top: 12pt;
+                padding-left: 99pt;
+                text-indent: -26pt;
+                text-align: left;
+              "
+            >
+              the direction of the gradient vector.
+            </p>
+          </li>
+        </ol>
+      </ol>
+    </ol>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+
+    <p
+      class="s4"
+      style="
+        padding-left: 32pt;
+        text-indent: 0pt;
+        line-height: 36pt;
+        text-align: left;
+      "
+    >
+      Edge Linking and Boundary Detection (Contd…)
+    </p>
+    <h3
+      style="
+        padding-left: 10pt;
+        text-indent: 0pt;
+        line-height: 24pt;
+        text-align: left;
+      "
+    >
+      The magnitude of the gradient vector
+    </h3>
+    <ul id="l21">
+      <li>
+        <p
+          class="s9"
+          style="
+            padding-top: 10pt;
+            padding-left: 37pt;
+            text-indent: -27pt;
+            line-height: 112%;
+            text-align: left;
+          "
+        >
+          Let S<span class="s11">xy</span><span class="s12"> </span>denote the
+          set of coordinates of a neighborhood centered at point (x,y) in an
+          image.
+        </p>
+      </li>
+      <li>
+        <p
+          class="s9"
+          style="
+            padding-top: 7pt;
+            padding-left: 37pt;
+            text-indent: -27pt;
+            text-align: left;
+          "
+        >
+          An edge pixel with coordinates (s, t) in S<span class="s11">xy</span
+          ><span class="s12"> </span>is similar in
+          <span class="s10">magnitude </span>to the pixel at (x, y) if
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p style="padding-left: 167pt; text-indent: 0pt; text-align: left">
+          <span
+            ><img
+              width="497"
+              height="34"
+              alt="image"
+              src="U3%20-%20Image%20Segmentation_files/Image_030.jpg"
+          /></span>
+        </p>
+        <p
+          class="s9"
+          style="
+            padding-top: 13pt;
+            padding-left: 37pt;
+            text-indent: 0pt;
+            text-align: left;
+          "
+        >
+          where E is a positive threshold.
+        </p>
+        <h3
+          style="
+            padding-top: 10pt;
+            padding-left: 10pt;
+            text-indent: 0pt;
+            text-align: left;
+          "
+        >
+          The direction angle of the gradient vector
+        </h3>
+      </li>
+      <li>
+        <p
+          class="s9"
+          style="
+            padding-top: 10pt;
+            padding-left: 37pt;
+            text-indent: -27pt;
+            text-align: left;
+          "
+        >
+          An edge pixel with coordinates (s, t) in S<span class="s11">xy</span
+          ><span class="s12"> </span>has an
+          <span class="s10">angle </span>similar to the pixel at (x, y) if
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p style="padding-left: 184pt; text-indent: 0pt; text-align: left">
+          <span
+            ><img
+              width="507"
+              height="26"
+              alt="image"
+              src="U3%20-%20Image%20Segmentation_files/Image_031.jpg"
+          /></span>
+        </p>
+        <p
+          class="s9"
+          style="
+            padding-top: 10pt;
+            padding-left: 37pt;
+            text-indent: 0pt;
+            text-align: left;
+          "
+        >
+          where A is a positive angle threshold.
+        </p>
+      </li>
+      <li>
+        <p
+          class="s9"
+          style="
+            padding-top: 10pt;
+            padding-left: 37pt;
+            text-indent: -27pt;
+            line-height: 125%;
+            text-align: left;
+          "
+        >
+          The direction of the edge at (x,y) is
+          <span class="s10">perpendicular </span>to the direction of the
+          gradient vector at that point.
+        </p>
+      </li>
+      <li>
+        <p
+          class="s9"
+          style="
+            padding-top: 4pt;
+            padding-left: 37pt;
+            text-indent: -27pt;
+            line-height: 113%;
+            text-align: left;
+          "
+        >
+          <span class="s16"> </span>A pixel with coordinates(s, t) in S<span
+            class="s11"
+            >xy </span
+          >is linked to the pixel at (x, y) if both magnitude and direction
+          criteria are satisfied. This process is repeated at every location in
+          the imag<span class="s17">3</span>e<span class="s17">5</span>.
+        </p>
+        <p
+          class="s2"
+          style="
+            padding-left: 5pt;
+            text-indent: 0pt;
+            line-height: 12pt;
+            text-align: left;
+          "
+        >
+          [Type text]
+        </p>
+        <p
+          class="s4"
+          style="
+            padding-left: 32pt;
+            text-indent: 0pt;
+            line-height: 36pt;
+            text-align: left;
+          "
+        >
+          Edge Linking and Boundary Detection (Contd…)
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p style="padding-left: 36pt; text-indent: 0pt; text-align: left">
+          <span
+            ><img
+              width="785"
+              height="375"
+              alt="image"
+              src="U3%20-%20Image%20Segmentation_files/Image_032.jpg"
+          /></span>
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p style="padding-left: 46pt; text-indent: 0pt; text-align: left">
+          <span
+            ><img
+              width="798"
+              height="162"
+              alt="image"
+              src="U3%20-%20Image%20Segmentation_files/Image_033.jpg"
+          /></span>
+        </p>
+        <p
+          class="s2"
+          style="
+            padding-top: 17pt;
+            padding-left: 5pt;
+            text-indent: 0pt;
+            text-align: left;
+          "
+        >
+          [Type text]
+        </p>
+        <p
+          class="s4"
+          style="
+            padding-left: 32pt;
+            text-indent: 0pt;
+            line-height: 36pt;
+            text-align: left;
+          "
+        >
+          Edge Linking and Boundary Detection (Contd…)
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p style="padding-left: 63pt; text-indent: 0pt; text-align: left">
+          <span
+            ><img
+              width="696"
+              height="495"
+              alt="image"
+              src="U3%20-%20Image%20Segmentation_files/Image_034.jpg"
+          /></span>
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p
+          class="s2"
+          style="padding-left: 5pt; text-indent: 0pt; text-align: left"
+        >
+          [Type text]
+        </p>
+        <p
+          class="s4"
+          style="
+            padding-left: 32pt;
+            text-indent: 0pt;
+            line-height: 36pt;
+            text-align: left;
+          "
+        >
+          Edge Linking and Boundary Detection (Contd…)
+        </p>
+        <h2
+          style="
+            padding-top: 9pt;
+            padding-left: 46pt;
+            text-indent: 0pt;
+            text-align: justify;
+          "
+        >
+          <a name="bookmark13">Regional Processing</a>
+        </h2>
+        <ul id="l22">
+          <li>
+            <p
+              style="
+                padding-top: 12pt;
+                padding-left: 73pt;
+                text-indent: -27pt;
+                line-height: 125%;
+                text-align: justify;
+              "
+            >
+              Often, the location of regions of interest in an image are known
+              or can be determined.
+            </p>
+          </li>
+          <li>
+            <p
+              style="
+                padding-top: 4pt;
+                padding-left: 73pt;
+                text-indent: -27pt;
+                line-height: 125%;
+                text-align: justify;
+              "
+            >
+              One approach to this type of processing is functional
+              approximation, where we fit a 2-D curve to the known points.
+            </p>
+          </li>
+          <li>
+            <p
+              style="
+                padding-top: 4pt;
+                padding-left: 73pt;
+                text-indent: -27pt;
+                line-height: 124%;
+                text-align: justify;
+              "
+            >
+              Polygonal approximations are particularly attractive because they
+              can capture the essential shape features of a region while keeping
+              the representation of the boundary (i.e., the vertices of the
+              polygon) relatively simple.
+            </p>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+            <p
+              class="s2"
+              style="padding-left: 5pt; text-indent: 0pt; text-align: left"
+            >
+              [Type text]
+            </p>
+            <p
+              class="s4"
+              style="
+                padding-left: 32pt;
+                text-indent: 0pt;
+                line-height: 36pt;
+                text-align: left;
+              "
+            >
+              Edge Linking and Boundary Detection (Contd…)
+            </p>
+            <h1
+              style="
+                padding-top: 9pt;
+                padding-left: 46pt;
+                text-indent: 0pt;
+                text-align: left;
+              "
+            >
+              Regional Processing
+            </h1>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+            <p style="padding-left: 75pt; text-indent: 0pt; text-align: left">
+              <span
+                ><img
+                  width="701"
+                  height="383"
+                  alt="image"
+                  src="U3%20-%20Image%20Segmentation_files/Image_035.jpg"
+              /></span>
+            </p>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+            <p
+              class="s2"
+              style="padding-left: 5pt; text-indent: 0pt; text-align: left"
+            >
+              [Type text]
+            </p>
+            <p
+              class="s4"
+              style="
+                padding-left: 32pt;
+                text-indent: 0pt;
+                line-height: 36pt;
+                text-align: left;
+              "
+            >
+              Edge Linking and Boundary Detection (Contd…)
+            </p>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+            <p style="padding-left: 38pt; text-indent: 0pt; text-align: left">
+              <span
+                ><img
+                  width="824"
+                  height="401"
+                  alt="image"
+                  src="U3%20-%20Image%20Segmentation_files/Image_036.jpg"
+              /></span>
+            </p>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+            <p style="padding-left: 48pt; text-indent: 0pt; text-align: left">
+              <span
+                ><img
+                  width="785"
+                  height="131"
+                  alt="image"
+                  src="U3%20-%20Image%20Segmentation_files/Image_037.jpg"
+              /></span>
+            </p>
+            <p
+              class="s2"
+              style="
+                padding-top: 25pt;
+                padding-left: 5pt;
+                text-indent: 0pt;
+                text-align: left;
+              "
+            >
+              [Type text]
+            </p>
+            <p
+              class="s4"
+              style="
+                padding-left: 32pt;
+                text-indent: 0pt;
+                line-height: 36pt;
+                text-align: left;
+              "
+            >
+              Edge Linking and Boundary Detection (Contd…)
+            </p>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+            <p style="padding-left: 28pt; text-indent: 0pt; text-align: left">
+              <span
+                ><img
+                  width="793"
+                  height="487"
+                  alt="image"
+                  src="U3%20-%20Image%20Segmentation_files/Image_038.jpg"
+              /></span>
+            </p>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+            <p
+              class="s2"
+              style="padding-left: 5pt; text-indent: 0pt; text-align: left"
+            >
+              [Type text]
+            </p>
+            <p
+              class="s4"
+              style="
+                padding-left: 32pt;
+                text-indent: 0pt;
+                line-height: 36pt;
+                text-align: left;
+              "
+            >
+              Edge Linking and Boundary Detection (Contd…)
+            </p>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+            <p style="padding-left: 19pt; text-indent: 0pt; text-align: left">
+              <span
+                ><img
+                  width="881"
+                  height="258"
+                  alt="image"
+                  src="U3%20-%20Image%20Segmentation_files/Image_039.jpg"
+              /></span>
+            </p>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+            <p
+              class="s2"
+              style="padding-left: 5pt; text-indent: 0pt; text-align: left"
+            >
+              [Type text]
+            </p>
+            <p
+              class="s4"
+              style="
+                padding-left: 32pt;
+                text-indent: 0pt;
+                line-height: 36pt;
+                text-align: left;
+              "
+            >
+              Edge Linking and Boundary Detection (Contd…)
+            </p>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+            <p style="padding-left: 121pt; text-indent: 0pt; text-align: left">
+              <span
+                ><img
+                  width="564"
+                  height="536"
+                  alt="image"
+                  src="U3%20-%20Image%20Segmentation_files/Image_040.jpg"
+              /></span>
+            </p>
+            <p
+              class="s2"
+              style="
+                padding-top: 10pt;
+                padding-left: 5pt;
+                text-indent: 0pt;
+                text-align: left;
+              "
+            >
+              [Type text]
+            </p>
+            <p
+              class="s4"
+              style="
+                padding-left: 32pt;
+                text-indent: 0pt;
+                line-height: 36pt;
+                text-align: left;
+              "
+            >
+              Edge Linking and Boundary Detection (Contd…)
+            </p>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+            <h1
+              style="
+                padding-left: 46pt;
+                text-indent: 0pt;
+                line-height: 30pt;
+                text-align: left;
+              "
+            >
+              Global processing using the Hough Transform
+            </h1>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+            <p style="padding-left: 32pt; text-indent: 0pt; text-align: left">
+              <span
+                ><img
+                  width="838"
+                  height="402"
+                  alt="image"
+                  src="U3%20-%20Image%20Segmentation_files/Image_041.jpg"
+              /></span>
+            </p>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+            <p
+              class="s2"
+              style="padding-left: 5pt; text-indent: 0pt; text-align: left"
+            >
+              [Type text]
+            </p>
+            <p
+              class="s4"
+              style="
+                padding-left: 32pt;
+                text-indent: 0pt;
+                line-height: 36pt;
+                text-align: left;
+              "
+            >
+              Edge Linking and Boundary Detection (Contd…)
+            </p>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+            <h1
+              style="
+                padding-left: 46pt;
+                text-indent: 0pt;
+                line-height: 29pt;
+                text-align: left;
+              "
+            >
+              Global processing using the Hough Transform
+            </h1>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+            <p style="padding-left: 48pt; text-indent: 0pt; text-align: left">
+              <span
+                ><img
+                  width="800"
+                  height="256"
+                  alt="image"
+                  src="U3%20-%20Image%20Segmentation_files/Image_042.jpg"
+              /></span>
+            </p>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+            <p
+              class="s2"
+              style="
+                padding-top: 8pt;
+                padding-left: 5pt;
+                text-indent: 0pt;
+                text-align: left;
+              "
+            >
+              [Type text]
+            </p>
+            <p
+              class="s4"
+              style="
+                padding-left: 32pt;
+                text-indent: 0pt;
+                line-height: 36pt;
+                text-align: left;
+              "
+            >
+              Edge Linking and Boundary Detection (Contd…)
+            </p>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+            <p style="padding-left: 14pt; text-indent: 0pt; text-align: left">
+              <span
+                ><img
+                  width="846"
+                  height="377"
+                  alt="image"
+                  src="U3%20-%20Image%20Segmentation_files/Image_043.jpg"
+              /></span>
+            </p>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+            <p
+              class="s2"
+              style="padding-left: 5pt; text-indent: 0pt; text-align: left"
+            >
+              [Type text]
+            </p>
+            <p
+              class="s4"
+              style="
+                padding-left: 32pt;
+                text-indent: 0pt;
+                line-height: 36pt;
+                text-align: left;
+              "
+            >
+              Edge Linking and Boundary Detection (Contd…)
+            </p>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+            <p style="padding-left: 92pt; text-indent: 0pt; text-align: left">
+              <span
+                ><img
+                  width="658"
+                  height="492"
+                  alt="image"
+                  src="U3%20-%20Image%20Segmentation_files/Image_044.jpg"
+              /></span>
+            </p>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+            <p
+              class="s2"
+              style="padding-left: 5pt; text-indent: 0pt; text-align: left"
+            >
+              [Type text]
+            </p>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+            <p
+              class="s1"
+              style="
+                padding-top: 3pt;
+                padding-left: 73pt;
+                text-indent: 0pt;
+                text-align: left;
+              "
+            >
+              <a name="bookmark14">16MDSE7 - Image Processing</a>
+            </p>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+            <p
+              class="s1"
+              style="
+                padding-left: 160pt;
+                text-indent: 115pt;
+                line-height: 125%;
+                text-align: left;
+              "
+            >
+              Unit III Image Segmentation
+            </p>
+            <p
+              class="s1"
+              style="padding-left: 290pt; text-indent: 0pt; text-align: left"
+            >
+              <a name="bookmark15">Part 2</a>
+            </p>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+            <p
+              class="s3"
+              style="
+                padding-left: 92pt;
+                text-indent: 0pt;
+                line-height: 40pt;
+                text-align: center;
+              "
+            >
+              <a name="bookmark16">Outline</a>
+            </p>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+            <ul id="l23">
+              <li>
+                <p
+                  style="
+                    padding-left: 97pt;
+                    text-indent: -27pt;
+                    text-align: left;
+                  "
+                >
+                  Thresholding
+                </p>
+              </li>
+              <li>
+                <p
+                  style="
+                    padding-top: 12pt;
+                    padding-left: 97pt;
+                    text-indent: -27pt;
+                    text-align: left;
+                  "
+                >
+                  Region Based Segmentation
+                </p>
+              </li>
+              <li>
+                <p
+                  style="
+                    padding-top: 12pt;
+                    padding-left: 97pt;
+                    text-indent: -27pt;
+                    text-align: left;
+                  "
+                >
+                  Motion Segmentation
+                </p>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+
+    <p
+      class="s4"
+      style="
+        padding-left: 92pt;
+        text-indent: 0pt;
+        line-height: 37pt;
+        text-align: center;
+      "
+    >
+      Thresholding
+    </p>
+    <ul id="l24">
+      <li>
+        <p
+          class="s9"
+          style="
+            padding-top: 6pt;
+            padding-left: 67pt;
+            text-indent: -27pt;
+            line-height: 124%;
+            text-align: justify;
+          "
+        >
+          Thresholding are techniques that helps to partition the mages into
+          regions based on intensity values and/or properties of these values.
+        </p>
+      </li>
+      <li>
+        <p
+          class="s9"
+          style="
+            padding-top: 4pt;
+            padding-left: 67pt;
+            text-indent: -27pt;
+            line-height: 124%;
+            text-align: justify;
+          "
+        >
+          Suppose that the intensity histogram in Fig. 10.35(a) corresponds to
+          an image f(x, y), composed of
+          <b>light objects on a dark background</b>, in such a way that object
+          and background pixels have intensity values grouped into
+          <b>two dominant modes</b>.
+        </p>
+      </li>
+      <li>
+        <p
+          class="s9"
+          style="
+            padding-top: 5pt;
+            padding-left: 67pt;
+            text-indent: -27pt;
+            line-height: 124%;
+            text-align: justify;
+          "
+        >
+          One obvious way to extract the objects from the background is to
+          select a threshold T, that separates these modes.
+        </p>
+      </li>
+      <li>
+        <p
+          class="s9"
+          style="
+            padding-top: 4pt;
+            padding-left: 67pt;
+            text-indent: -27pt;
+            line-height: 125%;
+            text-align: justify;
+          "
+        >
+          Then, any point (x, y)in the image at which f(x, y) &gt; T is called
+          an <span class="s18">object point</span>; otherwise, the point is
+          called a <span class="s18">background point</span><b>.</b>
+        </p>
+      </li>
+      <li>
+        <p
+          class="s9"
+          style="
+            padding-top: 4pt;
+            padding-left: 67pt;
+            text-indent: -27pt;
+            text-align: justify;
+          "
+        >
+          In other words, the segmented image g(x, y), is given by
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p style="padding-left: 159pt; text-indent: 0pt; text-align: left">
+          <span
+            ><img
+              width="524"
+              height="63"
+              alt="image"
+              src="U3%20-%20Image%20Segmentation_files/Image_045.jpg"
+          /></span>
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p
+          class="s2"
+          style="padding-left: 5pt; text-indent: 0pt; text-align: left"
+        >
+          [Type text]
+        </p>
+        <p
+          class="s4"
+          style="
+            padding-left: 92pt;
+            text-indent: 0pt;
+            line-height: 37pt;
+            text-align: center;
+          "
+        >
+          Thresholding
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p style="padding-left: 32pt; text-indent: 0pt; text-align: left">
+          <span
+            ><img
+              width="818"
+              height="310"
+              alt="image"
+              src="U3%20-%20Image%20Segmentation_files/Image_046.jpg"
+          /></span>
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p
+          class="s2"
+          style="padding-left: 5pt; text-indent: 0pt; text-align: left"
+        >
+          [Type text]
+        </p>
+        <p
+          class="s4"
+          style="
+            padding-left: 92pt;
+            text-indent: 0pt;
+            line-height: 36pt;
+            text-align: center;
+          "
+        >
+          Thresholding (Contd…)
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <ul id="l25">
+          <li>
+            <p
+              style="
+                padding-left: 73pt;
+                text-indent: -27pt;
+                line-height: 124%;
+                text-align: justify;
+              "
+            >
+              When T is a constant applicable over an entire image, the process
+              given in this equation is referred to as
+              <span class="s19">global thresholding</span>.
+            </p>
+          </li>
+          <li>
+            <p
+              style="
+                padding-top: 4pt;
+                padding-left: 73pt;
+                text-indent: -27pt;
+                text-align: left;
+              "
+            >
+              When the value of T changes over an image, we use the term
+            </p>
+            <p
+              class="s19"
+              style="
+                padding-top: 7pt;
+                padding-left: 73pt;
+                text-indent: 0pt;
+                text-align: left;
+              "
+            >
+              variable thresholding<span class="p">.</span>
+            </p>
+          </li>
+          <li>
+            <p
+              class="s19"
+              style="
+                padding-top: 11pt;
+                padding-left: 73pt;
+                text-indent: -27pt;
+                line-height: 124%;
+                text-align: justify;
+              "
+            >
+              <span class="p">The term </span>local
+              <span class="h2">or </span>regional thresholding
+              <span class="p"
+                >is used sometimes to denote variable thresholding in which the
+                value of T at any point (x, y) in an image depends on properties
+                of a neighborhood of (x, y).</span
+              >
+            </p>
+          </li>
+          <li>
+            <p
+              class="s19"
+              style="
+                padding-top: 5pt;
+                padding-left: 73pt;
+                text-indent: -27pt;
+                line-height: 124%;
+                text-align: justify;
+              "
+            >
+              <span class="p"
+                >If T depends on the spatial coordinates themselves, then
+                variable thresholding is often referred to as </span
+              >dynamic <span class="h2">or </span>adaptive
+              <span class="h2">thresholding.</span>
+            </p>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+            <p
+              class="s2"
+              style="padding-left: 5pt; text-indent: 0pt; text-align: left"
+            >
+              [Type text]
+            </p>
+            <p style="text-indent: 0pt; text-align: left">
+              <span
+                ><img
+                  width="764"
+                  height="208"
+                  alt="image"
+                  src="U3%20-%20Image%20Segmentation_files/Image_047.jpg"
+              /></span>
+            </p>
+            <p
+              class="s4"
+              style="
+                padding-left: 92pt;
+                text-indent: 0pt;
+                line-height: 36pt;
+                text-align: center;
+              "
+            >
+              Thresholding (Contd…)
+            </p>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+          </li>
+          <li>
+            <p
+              class="s9"
+              style="
+                padding-left: 73pt;
+                text-indent: -27pt;
+                line-height: 125%;
+                text-align: justify;
+              "
+            >
+              Figure 10.35(b) shows a more difficult thresholding problem
+              involving a histogram with
+              <b>three dominant modes </b>corresponding, for example,
+              <b>two light objects </b>on <b>a dark background</b>.
+            </p>
+          </li>
+          <li>
+            <p
+              class="s9"
+              style="
+                padding-top: 4pt;
+                padding-bottom: 2pt;
+                padding-left: 73pt;
+                text-indent: -27pt;
+                line-height: 125%;
+                text-align: justify;
+              "
+            >
+              Here, <span class="s18">multiple thresholding </span>classifies a
+              point (x, y) as belonging to the background if f(x, y) ≤ T<span
+                class="s20"
+                >1</span
+              >, to one object class if T<span class="s20">1</span> &lt; f(x, y)
+              ≤ T<span class="s20">2</span>, and to the other object class if
+              f(x, y) &gt; T<span class="s20">2</span>. That is, the segmented
+              image is given by
+            </p>
+            <p style="padding-left: 171pt; text-indent: 0pt; text-align: left">
+              <span
+                ><img
+                  width="512"
+                  height="104"
+                  alt="image"
+                  src="U3%20-%20Image%20Segmentation_files/Image_048.jpg"
+              /></span>
+            </p>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+            <p
+              class="s2"
+              style="padding-left: 5pt; text-indent: 0pt; text-align: left"
+            >
+              [Type text]
+            </p>
+            <p
+              class="s9"
+              style="
+                padding-left: 5pt;
+                text-indent: 0pt;
+                line-height: 20pt;
+                text-align: left;
+              "
+            >
+              where a, b and c are any three distinct intensity values.
+            </p>
+            <p
+              class="s4"
+              style="
+                padding-left: 92pt;
+                text-indent: 0pt;
+                line-height: 36pt;
+                text-align: center;
+              "
+            >
+              Thresholding (Contd…)
+            </p>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+          </li>
+          <li>
+            <p
+              style="
+                padding-left: 73pt;
+                text-indent: -27pt;
+                line-height: 29pt;
+                text-align: left;
+              "
+            >
+              The success of intensity thresholding is directly related to the
+              <b>width</b>
+            </p>
+            <p
+              style="
+                padding-top: 7pt;
+                padding-left: 73pt;
+                text-indent: 0pt;
+                text-align: left;
+              "
+            >
+              and <b>depth </b>of the valley(s) separating the histogram modes.
+            </p>
+          </li>
+          <li>
+            <p
+              style="
+                padding-top: 12pt;
+                padding-left: 74pt;
+                text-indent: -27pt;
+                text-align: left;
+              "
+            >
+              In turn, the key factors affecting the properties of the valley(s)
+              are:
+            </p>
+            <ol id="l26">
+              <li>
+                <p
+                  style="
+                    padding-top: 7pt;
+                    padding-left: 73pt;
+                    text-indent: 1pt;
+                    line-height: 125%;
+                    text-align: left;
+                  "
+                >
+                  the separation between peaks (the further apart the peaks are,
+                  the better the chances of separating the modes);
+                </p>
+              </li>
+              <li>
+                <p
+                  style="
+                    padding-top: 4pt;
+                    padding-left: 73pt;
+                    text-indent: 0pt;
+                    line-height: 124%;
+                    text-align: left;
+                  "
+                >
+                  the noise content in the image (the modes broaden as noise
+                  increases);
+                </p>
+              </li>
+              <li>
+                <p
+                  style="
+                    padding-top: 5pt;
+                    padding-left: 99pt;
+                    text-indent: -26pt;
+                    text-align: left;
+                  "
+                >
+                  the relative sizes of objects and background;
+                </p>
+              </li>
+              <li>
+                <p
+                  style="
+                    padding-top: 12pt;
+                    padding-left: 99pt;
+                    text-indent: -26pt;
+                    text-align: left;
+                  "
+                >
+                  the uniformity of the illumination source; and
+                </p>
+              </li>
+              <li>
+                <p
+                  style="
+                    padding-top: 12pt;
+                    padding-left: 99pt;
+                    text-indent: -26pt;
+                    text-align: left;
+                  "
+                >
+                  the uniformity of the reflectance properties of the image.
+                </p>
+              </li>
+            </ol>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+            <p
+              class="s2"
+              style="padding-left: 5pt; text-indent: 0pt; text-align: left"
+            >
+              [Type text]
+            </p>
+            <p
+              class="s4"
+              style="
+                padding-left: 92pt;
+                text-indent: 0pt;
+                line-height: 36pt;
+                text-align: center;
+              "
+            >
+              Thresholding (Contd…)
+            </p>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+            <p
+              class="s15"
+              style="
+                padding-left: 46pt;
+                text-indent: 0pt;
+                line-height: 29pt;
+                text-align: left;
+              "
+            >
+              Noise in image thresholding
+            </p>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+            <p style="padding-left: 69pt; text-indent: 0pt; text-align: left">
+              <span
+                ><img
+                  width="725"
+                  height="486"
+                  alt="image"
+                  src="U3%20-%20Image%20Segmentation_files/Image_049.jpg"
+              /></span>
+            </p>
+            <p
+              class="s4"
+              style="
+                padding-left: 92pt;
+                text-indent: 0pt;
+                line-height: 36pt;
+                text-align: center;
+              "
+            >
+              Thresholding (Contd…)
+            </p>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+            <p
+              class="s15"
+              style="
+                padding-left: 46pt;
+                text-indent: 0pt;
+                line-height: 29pt;
+                text-align: left;
+              "
+            >
+              Illumination and reflectance
+            </p>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+            <p style="padding-left: 96pt; text-indent: 0pt; text-align: left">
+              <span
+                ><img
+                  width="655"
+                  height="425"
+                  alt="image"
+                  src="U3%20-%20Image%20Segmentation_files/Image_050.jpg"
+              /></span>
+            </p>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+            <p
+              class="s2"
+              style="padding-left: 5pt; text-indent: 0pt; text-align: left"
+            >
+              [Type text]
+            </p>
+            <p
+              class="s4"
+              style="
+                padding-left: 92pt;
+                text-indent: 0pt;
+                line-height: 37pt;
+                text-align: center;
+              "
+            >
+              Global Thresholding
+            </p>
+            <p
+              style="
+                padding-top: 22pt;
+                padding-left: 40pt;
+                text-indent: 0pt;
+                text-align: justify;
+              "
+            >
+              Basic Global Thresholding
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p
+          style="
+            padding-top: 12pt;
+            padding-left: 67pt;
+            text-indent: -27pt;
+            line-height: 133%;
+            text-align: justify;
+          "
+        >
+          If the intensity distributions of objects and background pixels are
+          sufficiently distinct, it is possible to use a single (<span
+            class="s7"
+            >global) threshold applicable over the entire image.</span
+          >
+        </p>
+      </li>
+      <li>
+        <p
+          class="s7"
+          style="
+            padding-top: 5pt;
+            padding-left: 67pt;
+            text-indent: -27pt;
+            line-height: 124%;
+            text-align: justify;
+          "
+        >
+          In most applications, there
+          <span class="p"
+            >is usually enough variability between images that, even if global
+            thresholding is a suitable approach, an algorithm capable of
+            estimating automatically the threshold value for each image is
+            required.</span
+          >
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p
+          class="s2"
+          style="padding-left: 5pt; text-indent: 0pt; text-align: left"
+        >
+          [Type text]
+        </p>
+        <p
+          class="s4"
+          style="
+            padding-left: 92pt;
+            text-indent: 0pt;
+            line-height: 36pt;
+            text-align: center;
+          "
+        >
+          Global Thresholding (Contd…)
+        </p>
+        <p
+          style="
+            padding-top: 3pt;
+            padding-left: 40pt;
+            text-indent: 0pt;
+            text-align: left;
+          "
+        >
+          The following iterative algorithm can be used for this purpose:
+        </p>
+        <ol id="l27">
+          <li>
+            <p
+              style="
+                padding-top: 12pt;
+                padding-left: 87pt;
+                text-indent: -19pt;
+                text-align: left;
+              "
+            >
+              Select an initial estimate for the global threshold, T.
+            </p>
+          </li>
+          <li>
+            <p
+              style="
+                padding-top: 11pt;
+                padding-left: 112pt;
+                text-indent: -45pt;
+                line-height: 141%;
+                text-align: left;
+              "
+            >
+              Segment the image using T to produce two groups of pixels: G<span
+                class="s21"
+                >1</span
+              >
+              consisting of all pixels with intensity values &gt;T, and
+            </p>
+            <p style="padding-left: 112pt; text-indent: 0pt; text-align: left">
+              G<span class="s21">2</span> consisting of pixels with values ≤ T.
+            </p>
+          </li>
+          <li>
+            <p
+              style="
+                padding-top: 12pt;
+                padding-left: 67pt;
+                text-indent: 0pt;
+                line-height: 124%;
+                text-align: left;
+              "
+            >
+              Compute the average (mean) intensity values m1 and m2 for the
+              pixels in G<span class="s5">1</span><span class="s6"> </span>and
+              G<span class="s5">2</span><span class="s6"> </span>respectively.
+            </p>
+          </li>
+          <li>
+            <p
+              style="
+                padding-top: 2pt;
+                padding-left: 87pt;
+                text-indent: -19pt;
+                text-align: left;
+              "
+            >
+              Compute a new threshold value: T = ½ (m<span class="s5">1</span
+              ><span class="s6"> </span>+ m<span class="s5">2</span>)
+            </p>
+          </li>
+          <li>
+            <p
+              style="
+                padding-top: 8pt;
+                padding-left: 67pt;
+                text-indent: 0pt;
+                line-height: 125%;
+                text-align: left;
+              "
+            >
+              Repeat Steps 2 through 4 until the difference between values of T
+              in successive iterations is smaller than a predefined parameter
+              ∆T.
+            </p>
+          </li>
+        </ol>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p
+          class="s2"
+          style="padding-left: 5pt; text-indent: 0pt; text-align: left"
+        >
+          [Type text]
+        </p>
+        <p
+          class="s4"
+          style="
+            padding-left: 92pt;
+            text-indent: 0pt;
+            line-height: 36pt;
+            text-align: center;
+          "
+        >
+          Global Thresholding (Contd…)
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+      </li>
+      <li>
+        <p
+          style="
+            padding-left: 67pt;
+            text-indent: -27pt;
+            line-height: 125%;
+            text-align: justify;
+          "
+        >
+          This simple algorithm works well in situations where there is a
+          reasonably clear valley between the modes of the histogram related to
+          objects and background.
+        </p>
+      </li>
+      <li>
+        <p
+          style="
+            padding-top: 4pt;
+            padding-left: 67pt;
+            text-indent: -27pt;
+            line-height: 124%;
+            text-align: justify;
+          "
+        >
+          Parameter ∆T is used to control the number of iterations in situations
+          where speed is an important issue. In general, the larger ∆T is, the
+          fewer iterations the algorithm will perform.
+        </p>
+      </li>
+      <li>
+        <p
+          style="
+            padding-top: 5pt;
+            padding-left: 67pt;
+            text-indent: -27pt;
+            line-height: 124%;
+            text-align: justify;
+          "
+        >
+          The initial threshold must be chosen greater than the minimum and less
+          than maximum intensity level in the image.
+        </p>
+      </li>
+      <li>
+        <p
+          style="
+            padding-top: 5pt;
+            padding-left: 67pt;
+            text-indent: -27pt;
+            text-align: justify;
+          "
+        >
+          The average intensity of the image is a good initial choice for T.
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p
+          class="s2"
+          style="
+            padding-top: 8pt;
+            padding-left: 5pt;
+            text-indent: 0pt;
+            text-align: left;
+          "
+        >
+          [Type text]
+        </p>
+        <p
+          class="s4"
+          style="
+            padding-left: 92pt;
+            text-indent: 0pt;
+            line-height: 36pt;
+            text-align: center;
+          "
+        >
+          Global Thresholding (Contd…)
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p style="padding-left: 38pt; text-indent: 0pt; text-align: left">
+          <span
+            ><img
+              width="812"
+              height="400"
+              alt="image"
+              src="U3%20-%20Image%20Segmentation_files/Image_051.jpg"
+          /></span>
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p
+          class="s2"
+          style="
+            padding-top: 8pt;
+            padding-left: 5pt;
+            text-indent: 0pt;
+            text-align: left;
+          "
+        >
+          [Type text]
+        </p>
+        <p
+          class="s8"
+          style="
+            padding-left: 92pt;
+            text-indent: 0pt;
+            line-height: 37pt;
+            text-align: center;
+          "
+        >
+          <a name="bookmark17">Region-Based Segmentation</a>
+        </p>
+        <h2
+          style="
+            padding-top: 28pt;
+            padding-left: 46pt;
+            text-indent: 0pt;
+            text-align: justify;
+          "
+        >
+          <a name="bookmark18">Region Growing</a>
+        </h2>
+        <ul id="l28">
+          <li>
+            <p
+              style="
+                padding-top: 12pt;
+                padding-left: 73pt;
+                text-indent: -27pt;
+                line-height: 124%;
+                text-align: justify;
+              "
+            >
+              Region growing is a procedure that groups pixels or subregions
+              into larger regions based on predefined criteria for growth.
+            </p>
+          </li>
+          <li>
+            <p
+              style="
+                padding-top: 5pt;
+                padding-left: 73pt;
+                text-indent: -27pt;
+                line-height: 124%;
+                text-align: justify;
+              "
+            >
+              The approach is to start with a set of “seed” points and from
+              these grow regions by appending to each seed those neighboring
+              pixels that have predefined properties similar to the seed (such
+              as specific ranges of intensity or color).
+            </p>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+            <p
+              class="s2"
+              style="padding-left: 5pt; text-indent: 0pt; text-align: left"
+            >
+              [Type text]
+            </p>
+            <p
+              class="s8"
+              style="
+                padding-left: 92pt;
+                text-indent: 0pt;
+                line-height: 36pt;
+                text-align: center;
+              "
+            >
+              Region-Based Segmentation (Contd…)
+            </p>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+            <p
+              class="s9"
+              style="
+                padding-left: 46pt;
+                text-indent: 0pt;
+                line-height: 23pt;
+                text-align: justify;
+              "
+            >
+              Issues with region growing
+            </p>
+          </li>
+          <li>
+            <p
+              class="s9"
+              style="
+                padding-top: 10pt;
+                padding-left: 73pt;
+                text-indent: -27pt;
+                line-height: 125%;
+                text-align: justify;
+              "
+            >
+              Descriptors alone can yield misleading results if connectivity
+              properties are not used in the region-growing process.
+            </p>
+          </li>
+          <li>
+            <p
+              class="s9"
+              style="
+                padding-top: 4pt;
+                padding-left: 73pt;
+                text-indent: -27pt;
+                line-height: 124%;
+                text-align: justify;
+              "
+            >
+              For example a random arrangement of pixels with only three
+              distinct intensity values.
+            </p>
+          </li>
+          <li>
+            <p
+              class="s9"
+              style="
+                padding-top: 4pt;
+                padding-left: 73pt;
+                text-indent: -27pt;
+                line-height: 124%;
+                text-align: justify;
+              "
+            >
+              Grouping pixels with the same intensity level to form a “region”
+              without paying attention to connectivity would yield a
+              segmentation result that is meaningless in the context .
+            </p>
+          </li>
+          <li>
+            <p
+              class="s9"
+              style="
+                padding-top: 4pt;
+                padding-left: 73pt;
+                text-indent: -27pt;
+                text-align: justify;
+              "
+            >
+              Another problem in region growing is the formulation of a stopping
+              rule.
+            </p>
+          </li>
+          <li>
+            <p
+              class="s9"
+              style="
+                padding-top: 10pt;
+                padding-left: 73pt;
+                text-indent: -27pt;
+                line-height: 125%;
+                text-align: justify;
+              "
+            >
+              Region growth should stop when no more pixels satisfy the criteria
+              for inclusion in that region.
+            </p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+
+    <p
+      class="s8"
+      style="
+        padding-left: 92pt;
+        text-indent: 0pt;
+        line-height: 36pt;
+        text-align: center;
+      "
+    >
+      Region-Based Segmentation (Contd…)
+    </p>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+    <p
+      class="s9"
+      style="
+        padding-left: 22pt;
+        text-indent: 0pt;
+        line-height: 23pt;
+        text-align: justify;
+      "
+    >
+      A basic region-growing algorithm based on 8-connectivity is as follows:
+    </p>
+    <p
+      class="s9"
+      style="
+        padding-top: 10pt;
+        padding-left: 49pt;
+        text-indent: 0pt;
+        line-height: 125%;
+        text-align: justify;
+      "
+    >
+      Let f(x, y) denote an input image array; S(x, y) denote a
+      <span class="s10">seed </span>array containing 1s at the locations of seed
+      points and 0s elsewhere; and Q denote a predicate to be applied at each
+      location (x, y). Arrays f and S are assumed to be of the same size.
+    </p>
+    <ol id="l29">
+      <li>
+        <p
+          class="s9"
+          style="
+            padding-top: 4pt;
+            padding-left: 49pt;
+            text-indent: 4pt;
+            line-height: 124%;
+            text-align: justify;
+          "
+        >
+          Find all connected components in S(x, y) and erode each connected
+          component to one pixel; label all such pixels found as 1. All other
+          pixels in S are labeled 0.
+        </p>
+      </li>
+      <li>
+        <p
+          class="s9"
+          style="
+            padding-top: 4pt;
+            padding-left: 49pt;
+            text-indent: 0pt;
+            line-height: 119%;
+            text-align: justify;
+          "
+        >
+          Form an image f<span class="s11">Q</span
+          ><span class="s12"> </span>such that, at a pair of coordinates (x, y),
+          let f<span class="s11">Q</span>(x, y) = 1 if the input image satisfies
+          the given predicate, Q, at those coordinates; otherwise, let f<span
+            class="s11"
+            >Q</span
+          >(x, y) = 0.
+        </p>
+      </li>
+      <li>
+        <p
+          class="s9"
+          style="
+            padding-top: 3pt;
+            padding-left: 49pt;
+            text-indent: 0pt;
+            line-height: 124%;
+            text-align: justify;
+          "
+        >
+          Let g be an image formed by appending to each seed point in S all the
+          1-valued points in f<span class="s11">Q</span
+          ><span class="s12"> </span>that are 8-connected to that seed point.
+        </p>
+      </li>
+      <li>
+        <p
+          class="s9"
+          style="
+            padding-top: 1pt;
+            padding-left: 68pt;
+            text-indent: -19pt;
+            text-align: justify;
+          "
+        >
+          Label each connected component in g with a different region label
+          (e.g.,1, 2, 3,
+        </p>
+        <p
+          class="s9"
+          style="
+            padding-top: 6pt;
+            padding-left: 49pt;
+            text-indent: 0pt;
+            text-align: justify;
+          "
+        >
+          …).This is the segmented image obtained by region growing.
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p
+          class="s2"
+          style="padding-left: 5pt; text-indent: 0pt; text-align: left"
+        >
+          [Type text]
+        </p>
+        <p
+          class="s8"
+          style="
+            padding-left: 92pt;
+            text-indent: 0pt;
+            line-height: 36pt;
+            text-align: center;
+          "
+        >
+          Region-Based Segmentation (Contd…)
+        </p>
+        <h3
+          style="
+            padding-top: 5pt;
+            padding-left: 22pt;
+            text-indent: 0pt;
+            text-align: justify;
+          "
+        >
+          Region Growing Segmentation
+        </h3>
+        <ul id="l30">
+          <li>
+            <p
+              class="s9"
+              style="
+                padding-top: 10pt;
+                padding-left: 49pt;
+                text-indent: -27pt;
+                line-height: 125%;
+                text-align: justify;
+              "
+            >
+              Consider the following 3 bit image. Let the seed value be 6,
+              segment the image using 8-connectivity and with threshold value 3.
+              Identify how many segments are in the image.
+            </p>
+          </li>
+          <li>
+            <p
+              class="s9"
+              style="
+                padding-top: 4pt;
+                padding-left: 49pt;
+                text-indent: -27pt;
+                text-align: justify;
+              "
+            >
+              Conditions for region grow are:
+            </p>
+            <p
+              class="s9"
+              style="
+                padding-top: 10pt;
+                padding-bottom: 4pt;
+                padding-left: 94pt;
+                text-indent: 0pt;
+                line-height: 141%;
+                text-align: justify;
+              "
+            >
+              all the pixels are 8-connected to the seed and are similar to it,
+              abs(seed_value – pixel_value) &lt; 3
+            </p>
+            <p
+              class="s22"
+              style="padding-left: 51pt; text-indent: 0pt; text-align: left"
+            >
+              <span
+                ><img
+                  width="216"
+                  height="200"
+                  alt="image"
+                  src="U3%20-%20Image%20Segmentation_files/Image_052.jpg"
+              /></span>
+              <span
+                ><img
+                  width="212"
+                  height="192"
+                  alt="image"
+                  src="U3%20-%20Image%20Segmentation_files/Image_053.jpg" /></span
+              ><span class="s23"> </span
+              ><span
+                ><img
+                  width="202"
+                  height="262"
+                  alt="image"
+                  src="U3%20-%20Image%20Segmentation_files/Image_054.jpg"
+              /></span>
+            </p>
+            <p
+              class="s2"
+              style="
+                padding-top: 13pt;
+                padding-left: 5pt;
+                text-indent: 0pt;
+                text-align: left;
+              "
+            >
+              [Type text]
+            </p>
+            <p
+              class="s8"
+              style="
+                padding-left: 92pt;
+                text-indent: 0pt;
+                line-height: 36pt;
+                text-align: center;
+              "
+            >
+              Region-Based Segmentation (Contd…)
+            </p>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+            <p style="padding-left: 123pt; text-indent: 0pt; text-align: left">
+              <span
+                ><img
+                  width="542"
+                  height="564"
+                  alt="image"
+                  src="U3%20-%20Image%20Segmentation_files/Image_055.jpg"
+              /></span>
+            </p>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+            <p
+              class="s2"
+              style="padding-left: 5pt; text-indent: 0pt; text-align: left"
+            >
+              [Type text]
+            </p>
+            <p
+              class="s8"
+              style="
+                padding-left: 92pt;
+                text-indent: 0pt;
+                line-height: 36pt;
+                text-align: center;
+              "
+            >
+              Region-Based Segmentation (Contd…)
+            </p>
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+            <h2
+              style="
+                padding-left: 46pt;
+                text-indent: 0pt;
+                line-height: 25pt;
+                text-align: justify;
+              "
+            >
+              <a name="bookmark19">Region Splitting and Merging</a>
+            </h2>
+            <ul id="l31">
+              <li>
+                <p
+                  style="
+                    padding-top: 11pt;
+                    padding-left: 73pt;
+                    text-indent: -27pt;
+                    line-height: 125%;
+                    text-align: justify;
+                  "
+                >
+                  In the region growing algorithm, regions grows from a set of
+                  seed points.
+                </p>
+              </li>
+              <li>
+                <p
+                  style="
+                    padding-top: 4pt;
+                    padding-left: 73pt;
+                    text-indent: -27pt;
+                    line-height: 124%;
+                    text-align: justify;
+                  "
+                >
+                  An alternative is to subdivide an image initially into a set
+                  of arbitrary, disjoint regions and then merge and/or split the
+                  regions in an attempt to satisfy the conditions of
+                  segmentation.
+                </p>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p
+          class="s2"
+          style="padding-left: 5pt; text-indent: 0pt; text-align: left"
+        >
+          [Type text]
+        </p>
+        <p
+          class="s8"
+          style="
+            padding-left: 92pt;
+            text-indent: 0pt;
+            line-height: 36pt;
+            text-align: center;
+          "
+        >
+          Region-Based Segmentation (Contd…)
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <h3
+          style="
+            padding-left: 28pt;
+            text-indent: 0pt;
+            line-height: 23pt;
+            text-align: justify;
+          "
+        >
+          Region Splitting and Merging
+        </h3>
+        <ul id="l32">
+          <li>
+            <p
+              class="s9"
+              style="
+                padding-top: 10pt;
+                padding-left: 55pt;
+                text-indent: -27pt;
+                text-align: justify;
+              "
+            >
+              Let R represent the entire image region and select a predicate Q.
+            </p>
+          </li>
+          <li>
+            <p
+              class="s9"
+              style="
+                padding-top: 10pt;
+                padding-left: 55pt;
+                text-indent: -27pt;
+                line-height: 125%;
+                text-align: justify;
+              "
+            >
+              One approach for segmenting R is to subdivide it successively into
+              smaller and smaller quadrant regions so that, for any region
+              R<span class="s11">i</span>, Q(R<span class="s11">i</span>) =
+              TRUE.
+            </p>
+          </li>
+          <li>
+            <p
+              class="s9"
+              style="
+                padding-top: 1pt;
+                padding-left: 55pt;
+                text-indent: -27pt;
+                line-height: 125%;
+                text-align: justify;
+              "
+            >
+              We start with the entire region. If Q(R) = FALSE, we divide the
+              image into quadrants.
+            </p>
+          </li>
+          <li>
+            <p
+              class="s9"
+              style="
+                padding-top: 4pt;
+                padding-left: 55pt;
+                text-indent: -27pt;
+                line-height: 124%;
+                text-align: justify;
+              "
+            >
+              If Q is FALSE for any quadrant, we subdivide that quadrant into
+              subquadrants, and so on.
+            </p>
+          </li>
+          <li>
+            <p
+              class="s9"
+              style="
+                padding-top: 4pt;
+                padding-left: 55pt;
+                text-indent: -27pt;
+                line-height: 124%;
+                text-align: justify;
+              "
+            >
+              This particular splitting technique has a convenient
+              representation in the form of so-called
+              <span class="s10">quadtrees</span>, that is, trees in which each
+              node has exactly four descendants, as Fig. 10.52 shows.
+            </p>
+          </li>
+          <li>
+            <p
+              class="s9"
+              style="
+                padding-top: 4pt;
+                padding-left: 55pt;
+                text-indent: -27pt;
+                text-align: justify;
+              "
+            >
+              The images corresponding to the nodes of a quadtree sometimes are
+              called
+            </p>
+          </li>
+        </ul>
+        <p
+          class="s10"
+          style="
+            padding-top: 6pt;
+            padding-left: 55pt;
+            text-indent: 0pt;
+            text-align: left;
+          "
+        >
+          quadregions <span class="s9">or </span>quadimages<span class="s9"
+            >.</span
+          >
+        </p>
+        <p
+          class="s2"
+          style="
+            padding-left: 5pt;
+            text-indent: 0pt;
+            line-height: 15pt;
+            text-align: left;
+          "
+        >
+          [Type text]
+        </p>
+        <p
+          class="s8"
+          style="
+            padding-left: 92pt;
+            text-indent: 0pt;
+            line-height: 36pt;
+            text-align: center;
+          "
+        >
+          Region-Based Segmentation (Contd…)
+        </p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <h2
+          style="
+            padding-left: 34pt;
+            text-indent: 0pt;
+            line-height: 25pt;
+            text-align: left;
+          "
+        >
+          <a name="bookmark20">Region Splitting and Merging</a>
+        </h2>
+        <ul id="l33">
+          <li>
+            <p
+              style="
+                padding-top: 11pt;
+                padding-left: 62pt;
+                text-indent: -57pt;
+                line-height: 125%;
+                text-align: left;
+              "
+            >
+              The root of the tree corresponds to the entire image and that each
+              node corresponds to the subdivision of a node into four descendant
+              nodes.
+            </p>
+            <ul id="l34">
+              <li>
+                <p
+                  style="
+                    padding-top: 4pt;
+                    padding-left: 65pt;
+                    text-indent: -31pt;
+                    text-align: left;
+                  "
+                >
+                  In this case, only R<span class="s21">4</span> was subdivided
+                  further.
+                </p>
+              </li>
+              <li>
+                <p
+                  style="
+                    padding-top: 12pt;
+                    padding-left: 61pt;
+                    text-indent: -27pt;
+                    line-height: 124%;
+                    text-align: left;
+                  "
+                >
+                  If only splitting is used, the final partition normally
+                  contains adjacent regions with identical properties.
+                </p>
+              </li>
+              <li>
+                <p
+                  style="
+                    padding-top: 5pt;
+                    padding-left: 61pt;
+                    text-indent: -27pt;
+                    text-align: left;
+                  "
+                >
+                  This drawback can be remedied by allowing merging as well as
+                  splitting.
+                </p>
+              </li>
+              <li>
+                <p
+                  style="
+                    padding-top: 11pt;
+                    padding-left: 61pt;
+                    text-indent: -27pt;
+                    line-height: 125%;
+                    text-align: left;
+                  "
+                >
+                  Satisfying the constraints of segmentation, merge only
+                  adjacent regions whose combined pixels satisfy the predicate
+                  Q.
+                </p>
+              </li>
+              <li>
+                <p
+                  style="
+                    padding-top: 4pt;
+                    padding-left: 61pt;
+                    text-indent: -27pt;
+                    line-height: 114%;
+                    text-align: left;
+                  "
+                >
+                  That is, two adjacent regions R<span class="s5">j</span
+                  ><span class="s6"> </span>and R<span class="s5">k</span
+                  ><span class="s6"> </span>are merged only if Q(Rj U R<span
+                    class="s5"
+                    >k</span
+                  >) = TRUE.
+                </p>
+                <p style="text-indent: 0pt; text-align: left"><br /></p>
+                <p
+                  class="s2"
+                  style="
+                    padding-top: 8pt;
+                    padding-left: 5pt;
+                    text-indent: 0pt;
+                    text-align: left;
+                  "
+                >
+                  [Type text]
+                </p>
+                <p
+                  class="s8"
+                  style="
+                    padding-left: 92pt;
+                    text-indent: 0pt;
+                    line-height: 36pt;
+                    text-align: center;
+                  "
+                >
+                  Region-Based Segmentation (Contd…)
+                </p>
+                <p style="text-indent: 0pt; text-align: left"><br /></p>
+                <h2
+                  style="
+                    padding-left: 46pt;
+                    text-indent: 0pt;
+                    line-height: 25pt;
+                    text-align: left;
+                  "
+                >
+                  <a name="bookmark21">Region Splitting and Merging</a>
+                </h2>
+                <p
+                  style="
+                    padding-top: 7pt;
+                    padding-left: 73pt;
+                    text-indent: -27pt;
+                    line-height: 84%;
+                    text-align: left;
+                  "
+                >
+                  The algorithm can be summarized by the following procedure in
+                  which, at any step,
+                </p>
+                <ol id="l35">
+                  <li>
+                    <p
+                      style="
+                        padding-top: 5pt;
+                        padding-left: 73pt;
+                        text-indent: 0pt;
+                        line-height: 74%;
+                        text-align: left;
+                      "
+                    >
+                      Split into four disjoint quadrants any region R<span
+                        class="s5"
+                        >i</span
+                      ><span class="s6"> </span>for which Q(R<span class="s5"
+                        >i</span
+                      >) = FALSE.
+                    </p>
+                  </li>
+                  <li>
+                    <p
+                      style="
+                        padding-top: 5pt;
+                        padding-left: 73pt;
+                        text-indent: 0pt;
+                        line-height: 83%;
+                        text-align: left;
+                      "
+                    >
+                      When no further splitting is possible, merge any adjacent
+                      regions R<span class="s5">j</span
+                      ><span class="s6"> </span>and R<span class="s5">k</span
+                      ><span class="s6"> </span>for which Q(R<span class="s5"
+                        >j</span
+                      ><span class="s6"> </span>U R<span class="s5">k</span>) =
+                      TRUE
+                    </p>
+                  </li>
+                  <li>
+                    <p
+                      style="
+                        padding-left: 93pt;
+                        text-indent: -19pt;
+                        line-height: 27pt;
+                        text-align: left;
+                      "
+                    >
+                      Stop when no further merging is possible.
+                    </p>
+                  </li>
+                </ol>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ol>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+    <p style="padding-left: 86pt; text-indent: 0pt; text-align: left">
+      <span
+        ><img
+          width="738"
+          height="199"
+          alt="image"
+          src="U3%20-%20Image%20Segmentation_files/Image_056.jpg"
+      /></span>
+    </p>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+    <p
+      class="s2"
+      style="
+        padding-top: 14pt;
+        padding-left: 5pt;
+        text-indent: 0pt;
+        text-align: left;
+      "
+    >
+      [Type text]
+    </p>
+    <p
+      class="s8"
+      style="
+        padding-left: 92pt;
+        text-indent: 0pt;
+        line-height: 36pt;
+        text-align: center;
+      "
+    >
+      Region-Based Segmentation (Contd…)
+    </p>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+    <p style="text-indent: 0pt; text-align: left">
+      <span
+        ><img
+          width="279"
+          height="263"
+          alt="image"
+          src="U3%20-%20Image%20Segmentation_files/Image_057.jpg"
+      /></span>
+    </p>
+    <h2
+      style="
+        padding-left: 46pt;
+        text-indent: 0pt;
+        line-height: 25pt;
+        text-align: left;
+      "
+    >
+      <a name="bookmark22">Region Splitting and Merging</a>
+    </h2>
+    <p
+      style="
+        padding-top: 1pt;
+        padding-left: 268pt;
+        text-indent: 0pt;
+        line-height: 133%;
+        text-align: left;
+      "
+    >
+      Consider R1; Let the threshold be T <span class="s24">≤ 3 </span>(7-4 =3)
+      Since the pixels in R1 satisfies with the threshold T, consider R1 as a
+      region.
+    </p>
+    <p
+      class="s24"
+      style="
+        padding-top: 7pt;
+        padding-left: 268pt;
+        text-indent: 0pt;
+        line-height: 156%;
+        text-align: justify;
+      "
+    >
+      Take R2; max_pixel – min_pixel = 7-2=5 which is greater than T. So split
+      R2 into 4 subregions.
+    </p>
+    <p style="text-indent: 0pt; text-align: left">
+      <span
+        ><img
+          width="287"
+          height="275"
+          alt="image"
+          src="U3%20-%20Image%20Segmentation_files/Image_058.jpg"
+      /></span>
+    </p>
+    <p
+      class="s24"
+      style="
+        padding-top: 4pt;
+        padding-left: 268pt;
+        text-indent: 0pt;
+        line-height: 156%;
+        text-align: justify;
+      "
+    >
+      Repeat this procedure for all regions and subregions until no more region
+      can be divided further.
+    </p>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+
+    <p
+      class="s8"
+      style="
+        padding-left: 92pt;
+        text-indent: 0pt;
+        line-height: 36pt;
+        text-align: center;
+      "
+    >
+      Region-Based Segmentation (Contd…)
+    </p>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+    <p style="text-indent: 0pt; text-align: left">
+      <span
+        ><img
+          width="280"
+          height="275"
+          alt="image"
+          src="U3%20-%20Image%20Segmentation_files/Image_059.jpg"
+      /></span>
+    </p>
+    <p
+      class="s25"
+      style="padding-left: 286pt; text-indent: 0pt; text-align: left"
+    >
+      Threshold, T ≤ 3
+    </p>
+    <p
+      class="s9"
+      style="
+        padding-top: 12pt;
+        padding-left: 286pt;
+        text-indent: 0pt;
+        text-align: left;
+      "
+    >
+      Consider two adjacent regions, R1 and R21.
+    </p>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+    <p style="padding-left: 39pt; text-indent: 0pt; text-align: left">
+      <span
+        ><img
+          width="279"
+          height="278"
+          alt="image"
+          src="U3%20-%20Image%20Segmentation_files/Image_060.jpg"
+      /></span>
+    </p>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+
+    <p
+      class="s9"
+      style="
+        padding-left: 5pt;
+        text-indent: 0pt;
+        line-height: 23pt;
+        text-align: justify;
+      "
+    >
+      Take the max_pixel in R1 – min_pixel in R2 and vice
+    </p>
+    <p
+      class="s9"
+      style="
+        padding-top: 6pt;
+        padding-left: 5pt;
+        text-indent: 0pt;
+        line-height: 124%;
+        text-align: justify;
+      "
+    >
+      versa (i.e., 7-5 = 2, 7-4 = 3). Since the pixels satisfies the threshold,
+      merge the R1 and R21.
+    </p>
+    <p
+      class="s25"
+      style="
+        padding-top: 8pt;
+        padding-left: 5pt;
+        text-indent: 0pt;
+        line-height: 157%;
+        text-align: justify;
+      "
+    >
+      Consider next two adjacent regions, newly merged region and R22.
+    </p>
+    <p
+      class="s25"
+      style="
+        padding-top: 4pt;
+        padding-left: 5pt;
+        text-indent: 0pt;
+        line-height: 157%;
+        text-align: justify;
+      "
+    >
+      Take max pixel in new region – min pixel in R22 and vice versa (i.e., 7-4
+      = 3, 7-4 =3). Since the pixels satisfies the threshold, merge the new
+      region and R22.
+    </p>
+    <p
+      class="s25"
+      style="
+        padding-top: 3pt;
+        padding-left: 5pt;
+        text-indent: 4pt;
+        line-height: 157%;
+        text-align: justify;
+      "
+    >
+      Repeat this procedure to merge the regions that satisfies the condition.
+    </p>
+    <p
+      class="s8"
+      style="
+        padding-left: 92pt;
+        text-indent: 0pt;
+        line-height: 36pt;
+        text-align: center;
+      "
+    >
+      Motion in Segmentation
+    </p>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+    <ul id="l36">
+      <ul id="l37">
+        <ul id="l38">
+          <li>
+            <p
+              style="
+                padding-left: 73pt;
+                text-indent: -27pt;
+                line-height: 125%;
+                text-align: justify;
+              "
+            >
+              Motion is a powerful cue used by humans and many other animals to
+              extract objects or regions of interest from a background of
+              irrelevant detail.
+            </p>
+            <h2
+              style="
+                padding-top: 4pt;
+                padding-left: 46pt;
+                text-indent: 0pt;
+                text-align: justify;
+              "
+            >
+              <a name="bookmark23">Spatial Techniques</a>
+            </h2>
+          </li>
+          <li>
+            <p
+              style="
+                padding-top: 11pt;
+                padding-left: 73pt;
+                text-indent: -27pt;
+                line-height: 119%;
+                text-align: justify;
+              "
+            >
+              One of the simplest approaches for detecting changes between two
+              image frames f(x, y, t<span class="s5">i</span>) and f(x, y,
+              t<span class="s5">j</span>) taken at times t<span class="s5"
+                >i</span
+              ><span class="s6"> </span>and t<span class="s5">j</span
+              ><span class="s6"> </span>respectively, is to compare the two
+              images pixel by pixel.
+            </p>
+          </li>
+          <li>
+            <p
+              style="
+                padding-top: 6pt;
+                padding-left: 73pt;
+                text-indent: -27pt;
+                text-align: justify;
+              "
+            >
+              One procedure for doing this is to form a difference image.
+            </p>
+          </li>
+        </ul>
+      </ul>
+    </ul>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+
+    <p
+      class="s8"
+      style="
+        padding-left: 92pt;
+        text-indent: 0pt;
+        line-height: 36pt;
+        text-align: center;
+      "
+    >
+      Motion in Segmentation (Contd…)
+    </p>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+    <p style="padding-left: 28pt; text-indent: 0pt; text-align: left">
+      <span
+        ><img
+          width="838"
+          height="418"
+          alt="image"
+          src="U3%20-%20Image%20Segmentation_files/Image_061.jpg"
+      /></span>
+    </p>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+
+    <p
+      class="s8"
+      style="
+        padding-left: 92pt;
+        text-indent: 0pt;
+        line-height: 36pt;
+        text-align: center;
+      "
+    >
+      Motion in Segmentation (Contd…)
+    </p>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+    <p style="padding-left: 35pt; text-indent: 0pt; text-align: left">
+      <span
+        ><img
+          width="824"
+          height="394"
+          alt="image"
+          src="U3%20-%20Image%20Segmentation_files/Image_062.jpg"
+      /></span>
+    </p>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+
+    <p
+      class="s8"
+      style="
+        padding-bottom: 1pt;
+        padding-left: 92pt;
+        text-indent: 0pt;
+        line-height: 36pt;
+        text-align: center;
+      "
+    >
+      Motion in Segmentation (Contd…)
+    </p>
+    <p style="padding-left: 21pt; text-indent: 0pt; text-align: left">
+      <span
+        ><img
+          width="810"
+          height="325"
+          alt="image"
+          src="U3%20-%20Image%20Segmentation_files/Image_063.jpg"
+      /></span>
+    </p>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+    <p style="padding-left: 18pt; text-indent: 0pt; text-align: left">
+      <span
+        ><img
+          width="796"
+          height="239"
+          alt="image"
+          src="U3%20-%20Image%20Segmentation_files/Image_064.jpg"
+      /></span>
+    </p>
+
+    <p
+      class="s8"
+      style="
+        padding-left: 92pt;
+        text-indent: 0pt;
+        line-height: 36pt;
+        text-align: center;
+      "
+    >
+      Motion in Segmentation (Contd…)
+    </p>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+    <p style="padding-left: 37pt; text-indent: 0pt; text-align: left">
+      <span
+        ><img
+          width="790"
+          height="348"
+          alt="image"
+          src="U3%20-%20Image%20Segmentation_files/Image_065.jpg"
+      /></span>
+    </p>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+  </body>
+</html>
